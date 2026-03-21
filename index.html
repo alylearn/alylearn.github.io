@@ -3,19 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>日語知識寶典 — 完整版</title>
+<title>阿萨姆的日本文化知识库</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
 
   :root {
-    --ink: #1a1208;
-    --paper: #f8f4ee;
-    --red: #b83232;
-    --gold: #a07818;
-    --gold-light: #f5edda;
-    --muted: #7a7060;
-    --border: rgba(160,120,24,0.2);
-    --white: #fff;
+    --bg: #f9f7f4;
+    --white: #ffffff;
+    --ink: #1f1f1f;
+    --soft: #5a5a5a;
+    --lighter: #8a8a8a;
+    --accent: #d4522a;
+    --accent-bg: #fdf0ec;
+    --border: #e8e4de;
+    --blue: #4a90d9;
+    --blue-bg: #f0f7ff;
+    --radius: 14px;
+    --radius-sm: 8px;
 
     --l1: #7a3a1e;
     --l1bg: #f5ece6;
@@ -30,193 +34,172 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--paper);
+    background: var(--bg);
     color: var(--ink);
-    font-family: 'Noto Sans SC', sans-serif;
-    min-height: 100vh;
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    -webkit-font-smoothing: antialiased;
   }
 
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image:
-      radial-gradient(circle at 15% 20%, rgba(184,50,50,0.04) 0%, transparent 45%),
-      radial-gradient(circle at 85% 80%, rgba(90,42,122,0.04) 0%, transparent 45%),
-      url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23a07818' fill-opacity='0.025'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3C/g%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0;
-  }
+  .page { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
 
-  .page { max-width: 900px; margin: 0 auto; padding: 72px 32px 100px; position: relative; z-index: 1; }
-
-  /* ── HERO ── */
-  .hero {
-    text-align: center;
-    padding-bottom: 56px;
-    margin-bottom: 56px;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .hero::after {
-    content: '◆';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: var(--gold);
-    background: var(--paper);
-    padding: 0 16px;
-    font-size: 11px;
-  }
-
-  .hero-eyebrow {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 11px;
-    letter-spacing: 6px;
-    color: var(--gold);
-    font-weight: 300;
-    margin-bottom: 20px;
-    opacity: 0.8;
-  }
-
-  .hero-title {
-    font-family: 'Shippori Mincho B1', serif;
-    font-size: clamp(32px, 7vw, 64px);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
-    color: var(--ink);
-  }
-
-  .hero-title span { color: var(--red); }
-
-  .hero-subtitle {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 13px;
-    letter-spacing: 4px;
-    color: var(--muted);
-    font-weight: 300;
-    margin-bottom: 32px;
-  }
-
-  .hero-desc {
-    max-width: 540px;
-    margin: 0 auto 36px;
-    font-size: 14px;
-    line-height: 1.9;
-    color: var(--muted);
-  }
-
-  .hero-stats {
+  /* ── 个人头部 ── */
+  .profile {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    align-items: center;
+    gap: 20px;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-bg);
+    display: block;
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
+    opacity: 0.3;
+  }
+
+  .profile-info { flex: 1; }
+
+  .profile-name {
+    font-size: 20px;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .profile-bio {
+    font-size: 14px;
+    color: var(--soft);
+    margin-bottom: 10px;
+  }
+
+  .profile-tags {
+    display: flex;
+    gap: 6px;
     flex-wrap: wrap;
   }
 
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 36px;
+  .profile-tag {
+    font-size: 11px;
     font-weight: 700;
-    color: var(--red);
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+
+  /* ── 知识库说明 ── */
+  .intro-card {
+    background: var(--accent);
+    color: white;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .intro-emoji { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+
+  .intro-title {
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 6px;
+  }
+
+  .intro-desc {
+    font-size: 13.5px;
+    line-height: 1.75;
+    opacity: 0.9;
+  }
+
+  /* ── 统计数字 ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--accent);
     line-height: 1;
     margin-bottom: 4px;
   }
-  .stat-label {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 2px;
-  }
 
-  /* ── HOW TO READ ── */
-  .how-to {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 24px 28px;
-    margin-bottom: 48px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 20px;
-    align-items: center;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  }
+  .stat-label { font-size: 11px; color: var(--lighter); }
 
-  .how-to-icon {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 32px;
-    color: var(--gold);
-    opacity: 0.6;
-  }
-
-  .how-to-text { font-size: 13.5px; line-height: 1.8; color: var(--muted); }
-  .how-to-text strong { color: var(--ink); }
-
-  /* ── LAYER SECTIONS ── */
-  .layer-section { margin-bottom: 48px; }
-
-  .layer-label {
+  /* ── 层级标题 ── */
+  .layer-title {
     display: flex;
     align-items: center;
-    gap: 14px;
-    margin-bottom: 16px;
-    padding: 10px 16px;
+    gap: 10px;
+    margin-bottom: 12px;
+    margin-top: 8px;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
     border-left: 4px solid;
   }
 
-  .layer-num {
-    font-size: 10px;
-    letter-spacing: 3px;
-    font-weight: 700;
-    opacity: 0.5;
-    min-width: 60px;
-  }
+  .layer-title.l1 { background: var(--l1bg); border-color: var(--l1); }
+  .layer-title.l2 { background: var(--l2bg); border-color: var(--l2); }
+  .layer-title.l3 { background: var(--l3bg); border-color: var(--l3); }
+  .layer-title.l4 { background: var(--l4bg); border-color: var(--l4); }
 
-  .layer-title-wrap { flex: 1; }
-  .layer-en { font-size: 10px; letter-spacing: 3px; font-weight: 700; opacity: 0.7; margin-bottom: 2px; }
-  .layer-zh { font-family: 'Noto Serif JP', serif; font-size: 17px; font-weight: 700; }
-  .layer-desc { font-size: 12px; opacity: 0.6; margin-top: 1px; }
+  .layer-num { font-size: 10px; font-weight: 700; letter-spacing: 2px; opacity: 0.5; }
+  .layer-name { font-size: 14px; font-weight: 700; flex: 1; }
+  .layer-desc { font-size: 12px; opacity: 0.6; }
 
-  .layer-badge {
-    font-size: 10px;
-    padding: 3px 10px;
-    border-radius: 2px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    white-space: nowrap;
-  }
+  .l1 .layer-num, .l1 .layer-name { color: var(--l1); }
+  .l2 .layer-num, .l2 .layer-name { color: var(--l2); }
+  .l3 .layer-num, .l3 .layer-name { color: var(--l3); }
+  .l4 .layer-num, .l4 .layer-name { color: var(--l4); }
 
-  .l1 .layer-label { border-color: var(--l1); background: var(--l1bg); }
-  .l1 .layer-en { color: var(--l1); }
-  .l1 .layer-badge { background: var(--l1); color: white; }
-
-  .l2 .layer-label { border-color: var(--l2); background: var(--l2bg); }
-  .l2 .layer-en { color: var(--l2); }
-  .l2 .layer-badge { background: var(--l2); color: white; }
-
-  .l3 .layer-label { border-color: var(--l3); background: var(--l3bg); }
-  .l3 .layer-en { color: var(--l3); }
-  .l3 .layer-badge { background: var(--l3); color: white; }
-
-  .l4 .layer-label { border-color: var(--l4); background: var(--l4bg); }
-  .l4 .layer-en { color: var(--l4); }
-  .l4 .layer-badge { background: var(--l4); color: white; }
-
-  /* ── CHAPTER CARDS ── */
-  .chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
+  /* ── 章节卡片 ── */
+  .chapter-grid { display: grid; gap: 10px; margin-bottom: 20px; }
 
   .chapter-card {
     background: var(--white);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 2px;
-    padding: 20px 22px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
     text-decoration: none;
     color: var(--ink);
-    display: block;
-    transition: all 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.18s;
     position: relative;
     overflow: hidden;
   }
@@ -225,7 +208,7 @@
     content: '';
     position: absolute;
     left: 0; top: 0; bottom: 0;
-    width: 3px;
+    width: 4px;
   }
 
   .l1 .chapter-card::before { background: var(--l1); }
@@ -234,48 +217,57 @@
   .l4 .chapter-card::before { background: var(--l4); }
 
   .chapter-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   }
 
-  .card-ch-num {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 11px;
-    letter-spacing: 2px;
-    margin-bottom: 8px;
+  .card-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
-    gap: 8px;
+    justify-content: center;
   }
 
-  .card-num-text { opacity: 0.35; font-weight: 700; }
+  .l1 .card-icon { background: var(--l1bg); }
+  .l2 .card-icon { background: var(--l2bg); }
+  .l3 .card-icon { background: var(--l3bg); }
+  .l4 .card-icon { background: var(--l4bg); }
 
-  .card-new {
-    font-size: 9px;
-    background: var(--red);
-    color: white;
-    padding: 1px 5px;
-    border-radius: 2px;
+  .card-info { flex: 1; }
+
+  .card-num {
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 1px;
+    margin-bottom: 3px;
+    opacity: 0.5;
   }
+
+  .l1 .card-num { color: var(--l1); }
+  .l2 .card-num { color: var(--l2); }
+  .l3 .card-num { color: var(--l3); }
+  .l4 .card-num { color: var(--l4); }
 
   .card-title {
-    font-family: 'Shippori Mincho B1', serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 6px;
+    margin-bottom: 3px;
+    line-height: 1.3;
   }
 
-  .card-subtitle { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 10px; }
+  .card-sub { font-size: 12px; color: var(--lighter); line-height: 1.4; }
 
-  .card-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .card-tags { display: flex; gap: 4px; margin-top: 6px; flex-wrap: wrap; }
+
   .card-tag {
     font-size: 10px;
-    padding: 2px 7px;
+    padding: 1px 7px;
     border-radius: 10px;
-    font-weight: 500;
+    font-weight: 600;
   }
 
   .l1 .card-tag { background: var(--l1bg); color: var(--l1); }
@@ -284,331 +276,302 @@
   .l4 .card-tag { background: var(--l4bg); color: var(--l4); }
 
   .card-arrow {
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
     font-size: 16px;
-    opacity: 0.2;
-    transition: opacity 0.2s, transform 0.2s;
+    color: var(--lighter);
+    flex-shrink: 0;
+    transition: transform 0.18s;
   }
 
-  .chapter-card:hover .card-arrow { opacity: 0.5; transform: translateX(3px); }
+  .chapter-card:hover .card-arrow { transform: translateX(3px); }
 
-  /* ── READING TIPS ── */
-  .reading-tips {
-    margin-top: 56px;
-    padding: 28px 32px;
-    background: var(--ink);
-    color: var(--paper);
-    border-radius: 2px;
+  /* ── 使用说明 ── */
+  .tips-card {
+    background: var(--blue-bg);
+    border: 1px solid #c0d8f0;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-top: 28px;
   }
 
   .tips-title {
-    font-family: 'Noto Serif JP', serif;
     font-size: 14px;
-    letter-spacing: 3px;
-    color: var(--gold);
-    margin-bottom: 20px;
-    font-weight: 400;
-  }
-
-  .tips-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-
-  .tip-item { font-size: 13px; line-height: 1.8; opacity: 0.85; }
-  .tip-num {
-    font-family: 'Noto Serif JP', serif;
-    font-size: 24px;
     font-weight: 700;
-    color: var(--gold);
-    opacity: 0.4;
-    line-height: 1;
-    margin-bottom: 6px;
+    color: #1a3a5a;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 
-  /* ── FOOTER ── */
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .tip-item { font-size: 13px; line-height: 1.7; color: var(--soft); }
+  .tip-num { font-size: 18px; font-weight: 900; color: var(--blue); opacity: 0.4; line-height: 1; margin-bottom: 4px; }
+
+  /* ── 页脚 ── */
   .footer {
-    margin-top: 56px;
-    padding-top: 28px;
-    border-top: 1px solid var(--border);
     text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
     font-size: 12px;
-    color: var(--muted);
+    color: var(--lighter);
     line-height: 2;
-    letter-spacing: 1px;
   }
-
-  /* ── ANIMATIONS ── */
-  .chapter-card {
-    opacity: 0;
-    animation: fadeUp 0.4s forwards;
-  }
-
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-
-  .chapter-grid .chapter-card:nth-child(1) { animation-delay: 0.05s; }
-  .chapter-grid .chapter-card:nth-child(2) { animation-delay: 0.1s; }
-  .chapter-grid .chapter-card:nth-child(3) { animation-delay: 0.15s; }
-  .chapter-grid .chapter-card:nth-child(4) { animation-delay: 0.2s; }
-  .chapter-grid .chapter-card:nth-child(5) { animation-delay: 0.25s; }
 
   @media(max-width: 600px) {
-    .page { padding: 40px 20px 80px; }
-    .hero-stats { gap: 24px; }
-    .how-to { grid-template-columns: 1fr; }
-    .how-to-icon { display: none; }
+    .page { padding: 20px 16px 60px; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .tips-grid { grid-template-columns: 1fr; }
+    .profile { flex-direction: column; text-align: center; }
+    .profile-tags { justify-content: center; }
   }
 </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-eyebrow">日語知識寶典 · JAPANESE ENCYCLOPEDIA</div>
-    <h1 class="hero-title">日语<span>×</span>日本文化<br>知识宝典</h1>
-    <div class="hero-subtitle">VERSION 2.2 · 完整版</div>
-    <p class="hero-desc">
-      一本为中文读者写的日语与日本文化深度指南。从历史底色到真实圈层，从语言密码到刻板印象破防——帮你建立对日本真实、立体、有温度的理解。
-    </p>
-    <div class="hero-stats">
-      <div class="stat"><div class="stat-num">4</div><div class="stat-label">递进层次</div></div>
-      <div class="stat"><div class="stat-num">9</div><div class="stat-label">完整章节</div></div>
-      <div class="stat"><div class="stat-num">49</div><div class="stat-label">核心条目</div></div>
-      <div class="stat"><div class="stat-num">∞</div><div class="stat-label">验证建议</div></div>
+  <!-- 个人头部 -->
+  <div class="profile">
+    <div class="avatar-wrap">
+      <img class="avatar" src="avatar.png" alt="阿萨姆" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div style="display:none;width:72px;height:72px;border-radius:50%;background:var(--accent-bg);color:var(--accent);font-size:28px;font-weight:900;align-items:center;justify-content:center;border:3px solid var(--accent-bg);">A</div>
+      <div class="avatar-ring"></div>
     </div>
-  </div>
-
-  <!-- HOW TO READ -->
-  <div class="how-to">
-    <div class="how-to-icon">読</div>
-    <div class="how-to-text">
-      <strong>建议阅读顺序：</strong>从第一章顺序读下去。每一章都建立在前一章的基础上——有了历史底色才能理解语言，有了语言才能读懂文化，有了文化才能做出有质量的中日对比。<br>
-      跳读也完全可以，每章都是独立的。<strong>每节末尾的「验证建议」是真诚的邀请</strong>，这本宝典的真正完成，在你用一手资料校正它之后。
-    </div>
-  </div>
-
-  <!-- LAYER 1 -->
-  <div class="layer-section l1">
-    <div class="layer-label">
-      <div class="layer-num">LAYER 01</div>
-      <div class="layer-title-wrap">
-        <div class="layer-en">FOUNDATION · 底色层</div>
-        <div class="layer-zh">读懂日本之前，先读懂它的来路</div>
-        <div class="layer-desc">所有文化现象都有历史根源和精神底色，这一层是整本书的地基</div>
+    <div class="profile-info">
+      <div class="profile-name">阿萨姆 👋</div>
+      <div class="profile-bio">嗨～今天学了啥</div>
+      <div class="profile-tags">
+        <span class="profile-tag">🇯🇵 日本文化</span>
+        <span class="profile-tag">📚 持续学习</span>
+        <span class="profile-tag">✍️ 内容创作</span>
       </div>
-      <div class="layer-badge">必读</div>
+    </div>
+  </div>
+
+  <!-- 知识库介绍 -->
+  <div class="intro-card">
+    <div class="intro-emoji">📖</div>
+    <div>
+      <div class="intro-title">日本文化知识库</div>
+      <div class="intro-desc">从历史底色到真实圈层，从语言密码到刻板印象破防。深入系统了解日语和日本文化，每章末尾都有内容创作选题灵感。</div>
+    </div>
+  </div>
+
+  <!-- 统计数字 -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-num">4</div>
+      <div class="stat-label">递进层次</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">9</div>
+      <div class="stat-label">完整章节</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">49</div>
+      <div class="stat-label">核心条目</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">40+</div>
+      <div class="stat-label">选题灵感</div>
+    </div>
+  </div>
+
+  <!-- 第一层 -->
+  <div class="l1">
+    <div class="layer-title l1">
+      <span class="layer-num">LAYER 01</span>
+      <span class="layer-name">底色层 · 读懂日本之前，先读懂它的来路</span>
     </div>
     <div class="chapter-grid">
       <a class="chapter-card" href="chapter-01-history.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第一章</span>
-        </div>
-        <div class="card-title">日本从哪里来<br>历史脉络与文化基因</div>
-        <div class="card-subtitle">从古代天皇制到失去的三十年，理解现代日本行为逻辑的历史钥匙</div>
-        <div class="card-tags">
-          <span class="card-tag">古代日本</span>
-          <span class="card-tag">武士时代</span>
-          <span class="card-tag">明治维新</span>
-          <span class="card-tag">二战与战后</span>
-          <span class="card-tag">泡沫经济</span>
+        <div class="card-icon">📜</div>
+        <div class="card-info">
+          <div class="card-num">第一章</div>
+          <div class="card-title">日本从哪里来 — 历史脉络与文化基因</div>
+          <div class="card-sub">搞懂这章，才能理解日本人为什么"这么奇怪"</div>
+          <div class="card-tags">
+            <span class="card-tag">武士道</span>
+            <span class="card-tag">明治维新</span>
+            <span class="card-tag">失去的三十年</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
       <a class="chapter-card" href="chapter-02-religion.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第二章</span>
-        </div>
-        <div class="card-title">神道教与佛教<br>日本人的精神底色</div>
-        <div class="card-subtitle">他们说自己没有宗教信仰，但生活里全是宗教——侘寂、物哀、間的哲学根源</div>
-        <div class="card-tags">
-          <span class="card-tag">神道教</span>
-          <span class="card-tag">佛教</span>
-          <span class="card-tag">侘寂</span>
-          <span class="card-tag">物哀</span>
-          <span class="card-tag">間</span>
+        <div class="card-icon">🛕</div>
+        <div class="card-info">
+          <div class="card-num">第二章</div>
+          <div class="card-title">神道教与佛教 — 日本人的精神底色</div>
+          <div class="card-sub">他们说自己没有宗教信仰，但生活里全是宗教</div>
+          <div class="card-tags">
+            <span class="card-tag">神道教</span>
+            <span class="card-tag">侘寂</span>
+            <span class="card-tag">物哀</span>
+            <span class="card-tag">間</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
     </div>
   </div>
 
-  <!-- LAYER 2 -->
-  <div class="layer-section l2">
-    <div class="layer-label">
-      <div class="layer-num">LAYER 02</div>
-      <div class="layer-title-wrap">
-        <div class="layer-en">LANGUAGE · 语言层</div>
-        <div class="layer-zh">日语的骨骼与隐藏在语言里的文化</div>
-        <div class="layer-desc">不是背规则，是理解日语如何折射日本人的思维方式</div>
-      </div>
-      <div class="layer-badge">语言核心</div>
+  <!-- 第二层 -->
+  <div class="l2">
+    <div class="layer-title l2">
+      <span class="layer-num">LAYER 02</span>
+      <span class="layer-name">语言层 · 日语的骨骼与隐藏在语言里的文化</span>
     </div>
     <div class="chapter-grid">
       <a class="chapter-card" href="chapter-03-language.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第三章</span>
-        </div>
-        <div class="card-title">日语的骨骼与系统<br>从零理解底层逻辑</div>
-        <div class="card-subtitle">三套文字、词汇来源四大类、SOV语序、两种形容词、三层敬语体系全解</div>
-        <div class="card-tags">
-          <span class="card-tag">文字系统</span>
-          <span class="card-tag">词类</span>
-          <span class="card-tag">语序</span>
-          <span class="card-tag">发音</span>
-          <span class="card-tag">敬语</span>
+        <div class="card-icon">📝</div>
+        <div class="card-info">
+          <div class="card-num">第三章</div>
+          <div class="card-title">日语的骨骼与系统 — 从零理解底层逻辑</div>
+          <div class="card-sub">不是背规则，是理解日语的思维方式</div>
+          <div class="card-tags">
+            <span class="card-tag">三套文字</span>
+            <span class="card-tag">词类</span>
+            <span class="card-tag">敬语</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
       <a class="chapter-card" href="chapter-04-language-culture.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第四章</span>
-        </div>
-        <div class="card-title">日语里藏着的文化密码</div>
-        <div class="card-subtitle">拟声词系统、暧昧之美、中日借词双向流动、片假名世界与「間」的美学</div>
-        <div class="card-tags">
-          <span class="card-tag">拟声拟态词</span>
-          <span class="card-tag">曖昧</span>
-          <span class="card-tag">和製漢語</span>
-          <span class="card-tag">外来語</span>
-          <span class="card-tag">間</span>
+        <div class="card-icon">🔑</div>
+        <div class="card-info">
+          <div class="card-num">第四章</div>
+          <div class="card-title">日语里藏着的文化密码</div>
+          <div class="card-sub">读懂这些语言现象，你就读懂了一半的日本人</div>
+          <div class="card-tags">
+            <span class="card-tag">拟声词</span>
+            <span class="card-tag">曖昧</span>
+            <span class="card-tag">和製漢語</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
     </div>
   </div>
 
-  <!-- LAYER 3 -->
-  <div class="layer-section l3">
-    <div class="layer-label">
-      <div class="layer-num">LAYER 03</div>
-      <div class="layer-title-wrap">
-        <div class="layer-en">REAL JAPAN · 真实日本层</div>
-        <div class="layer-zh">撕开滤镜，看真实的日本长什么样</div>
-        <div class="layer-desc">地域差异、真实表达、社会阶层、圈层文化、社会困境——最丰富的一层</div>
-      </div>
-      <div class="layer-badge">最丰富</div>
+  <!-- 第三层 -->
+  <div class="l3">
+    <div class="layer-title l3">
+      <span class="layer-num">LAYER 03</span>
+      <span class="layer-name">真实日本层 · 撕开滤镜，看真实的日本</span>
     </div>
     <div class="chapter-grid">
       <a class="chapter-card" href="chapter-05-society.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第五章</span>
-        </div>
-        <div class="card-title">日本社会文化与地域差异</div>
-        <div class="card-subtitle">空气を読む、职场文化、季节仪式、おもてなし、关东vs关西、城市vs农村</div>
-        <div class="card-tags">
-          <span class="card-tag">空气を読む</span>
-          <span class="card-tag">本音建前</span>
-          <span class="card-tag">季节文化</span>
-          <span class="card-tag">地域差异</span>
+        <div class="card-icon">🌸</div>
+        <div class="card-info">
+          <div class="card-num">第五章</div>
+          <div class="card-title">日本社会文化与地域差异</div>
+          <div class="card-sub">关西人和关东人差距大得惊人，"日本人"其实有很多种</div>
+          <div class="card-tags">
+            <span class="card-tag">空气を読む</span>
+            <span class="card-tag">季节文化</span>
+            <span class="card-tag">地域差异</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
       <a class="chapter-card" href="chapter-06-expressions.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第六章</span>
-        </div>
-        <div class="card-title">真实场景下的日语表达</div>
-        <div class="card-subtitle">便利店/餐厅/居酒屋/职场/道歉/间接拒绝/情绪表达/问候——教科书不会教的</div>
-        <div class="card-tags">
-          <span class="card-tag">实用口语</span>
-          <span class="card-tag">职场用语</span>
-          <span class="card-tag">道歉文化</span>
-          <span class="card-tag">间接拒绝</span>
+        <div class="card-icon">💬</div>
+        <div class="card-info">
+          <div class="card-num">第六章</div>
+          <div class="card-title">真实场景下的日语表达</div>
+          <div class="card-sub">教科书不会教的，日本人真实在说的</div>
+          <div class="card-tags">
+            <span class="card-tag">便利店</span>
+            <span class="card-tag">居酒屋</span>
+            <span class="card-tag">间接拒绝</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
       <a class="chapter-card" href="chapter-07-class-subcultures.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第七章</span>
-          <span class="card-new">NEW</span>
-        </div>
-        <div class="card-title">格差社会与圈层图鉴<br>日本人群的真实切面</div>
-        <div class="card-subtitle">正非正社员分割、学歴社会、Yankii、Gyaru、Lolita、Otaku、Vtuber全图鉴</div>
-        <div class="card-tags">
-          <span class="card-tag">格差社会</span>
-          <span class="card-tag">阶层结构</span>
-          <span class="card-tag">亚文化圈层</span>
-          <span class="card-tag">身份认同</span>
+        <div class="card-icon">🎭</div>
+        <div class="card-info">
+          <div class="card-num">第七章</div>
+          <div class="card-title">格差社会与圈层图鉴</div>
+          <div class="card-sub">阶层、身份与亚文化——Gyaru / Otaku / Vtuber全图鉴</div>
+          <div class="card-tags">
+            <span class="card-tag">格差社会</span>
+            <span class="card-tag">学歴</span>
+            <span class="card-tag">亚文化</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
       <a class="chapter-card" href="chapter-08-popculture-society.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第八章</span>
-          <span class="card-new">NEW</span>
-        </div>
-        <div class="card-title">流行文化与当代社会困境</div>
-        <div class="card-subtitle">动漫日语vs真实日语、偶像文化、过劳死、引きこもり、少子化、さとり世代</div>
-        <div class="card-tags">
-          <span class="card-tag">ACG文化</span>
-          <span class="card-tag">社畜</span>
-          <span class="card-tag">引きこもり</span>
-          <span class="card-tag">少子化</span>
-          <span class="card-tag">Z世代</span>
+        <div class="card-icon">📺</div>
+        <div class="card-info">
+          <div class="card-num">第八章</div>
+          <div class="card-title">流行文化与当代社会困境</div>
+          <div class="card-sub">动漫、偶像、过劳死、引きこもり——同一片土地上并存的两个日本</div>
+          <div class="card-tags">
+            <span class="card-tag">ACG文化</span>
+            <span class="card-tag">社畜</span>
+            <span class="card-tag">少子化</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
     </div>
   </div>
 
-  <!-- LAYER 4 -->
-  <div class="layer-section l4">
-    <div class="layer-label">
-      <div class="layer-num">LAYER 04</div>
-      <div class="layer-title-wrap">
-        <div class="layer-en">CHINESE PERSPECTIVE · 中国视角层</div>
-        <div class="layer-zh">站在中国人的位置，重新看日本</div>
-        <div class="layer-desc">有了前三层的基础，中日对比和刻板印象破防才有意思</div>
-      </div>
-      <div class="layer-badge">收尾层</div>
+  <!-- 第四层 -->
+  <div class="l4">
+    <div class="layer-title l4">
+      <span class="layer-num">LAYER 04</span>
+      <span class="layer-name">中国视角层 · 站在中国人的位置，重新看日本</span>
     </div>
     <div class="chapter-grid">
       <a class="chapter-card" href="chapter-09-contrast-myths.html">
-        <div class="card-ch-num">
-          <span class="card-num-text">第九章</span>
-        </div>
-        <div class="card-title">中日文化对撞<br>× 刻板印象与真相</div>
-        <div class="card-subtitle">直接vs暧昧、面子vs恥、消费观对比、五大刻板印象逐条破防、8个文化雷区</div>
-        <div class="card-tags">
-          <span class="card-tag">沟通差异</span>
-          <span class="card-tag">面子vs恥</span>
-          <span class="card-tag">刻板印象</span>
-          <span class="card-tag">文化雷区</span>
+        <div class="card-icon">🔍</div>
+        <div class="card-info">
+          <div class="card-num">第九章</div>
+          <div class="card-title">中日文化对撞 × 刻板印象与真相</div>
+          <div class="card-sub">似近实远的两种文明，与那些半真半假的"常识"</div>
+          <div class="card-tags">
+            <span class="card-tag">沟通差异</span>
+            <span class="card-tag">面子vs恥</span>
+            <span class="card-tag">文化雷区</span>
+          </div>
         </div>
         <div class="card-arrow">→</div>
       </a>
     </div>
   </div>
 
-  <!-- READING TIPS -->
-  <div class="reading-tips">
-    <div class="tips-title">· 使用这本宝典的四种方式 ·</div>
+  <!-- 使用说明 -->
+  <div class="tips-card">
+    <div class="tips-title">💡 怎么用这个知识库</div>
     <div class="tips-grid">
       <div class="tip-item">
         <div class="tip-num">01</div>
-        <strong>顺序通读</strong><br>从第一章读到第九章，每一章都建立在前一章的基础上，完整体验四层递进逻辑。
+        <strong>顺序通读</strong><br>从第一章读到第九章，每章建立在上一章的基础上，读完你会有整体感。
       </div>
       <div class="tip-item">
         <div class="tip-num">02</div>
-        <strong>按需跳读</strong><br>对哪个话题感兴趣就去哪章——每章都是独立完整的，不需要前文铺垫也能读懂。
+        <strong>按需跳读</strong><br>对哪个话题感兴趣就去哪章，每章都是独立完整的。
       </div>
       <div class="tip-item">
         <div class="tip-num">03</div>
-        <strong>验证导向</strong><br>读完每节后，按"验证建议"去NHK、YouTube、X（Twitter）寻找一手资料，补充和校正宝典的内容。
+        <strong>选题灵感</strong><br>每章末尾有「选题灵感区」，读完直接看今天能发什么。
       </div>
       <div class="tip-item">
         <div class="tip-num">04</div>
-        <strong>内容创作素材</strong><br>每个条目都可以展开成一篇小红书/公众号内容。第六章的真实表达、第七章的圈层图鉴，是最容易转化为内容的部分。
+        <strong>验证核实</strong><br>每节都有验证建议，结合NHK/日剧/X上日本人的真实声音来用。
       </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- 页脚 -->
   <div class="footer">
-    <p>日語知識寶典 · v2.2 · 完整版</p>
-    <p style="margin-top:6px; opacity:0.6;">4层递进 · 9章 · 49个核心条目 · 全书完结</p>
-    <p style="margin-top:4px; opacity:0.45;">内容仅供学习参考，部分内容存在文化概括风险，请结合一手资料使用</p>
-    <p style="margin-top:12px; opacity:0.35; font-size:11px;">本宝典是知识的入口，不是终点 — 真正的理解，在你走进真实的日本之后</p>
+    <p>阿萨姆的日本文化知识库 · 持续更新中</p>
+    <p style="margin-top:4px; opacity:0.6;">内容仅供学习参考，部分内容存在文化概括风险，请结合一手资料使用</p>
   </div>
 
 </div>
