@@ -293,6 +293,48 @@
     .trap-grid { grid-template-columns: 1fr; }
   }
 
+
+  /* Fix: content directly in .section (not wrapped in sec-body) gets padding */
+  .section > .prose,
+  .section > .concept-block,
+  .section > .modern-link,
+  .section > .terms-grid,
+  .section > .pullquote,
+  .section > .timeline,
+  .section > .accuracy-note,
+  .section > .funny-box,
+  .section > .warning-block,
+  .section > .vocab-source-banner,
+  .section > .phrase-card,
+  .section > .phrase-group,
+  .section > .onoma-grid,
+  .section > .ambi-block,
+  .section > .gairaigo-grid,
+  .section > .keigo-block,
+  .section > .origin-flow,
+  .section > .sentence-demo,
+  .section > .wordclass-table,
+  .section > .script-grid,
+  .section > .dialogue-box,
+  .section > .dialogue-label,
+  .section > .compare-vs,
+  .section > .myth-block,
+  .section > .trap-grid,
+  .section > .stat-row,
+  .section > .season-grid,
+  .section > .region-compare,
+  .section > .subculture-grid,
+  .section > .class-pyramid,
+  .section > .compare-table,
+  .section > p {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .section > .prose:first-of-type,
+  .section > .concept-block:first-child,
+  .section > p:first-child { margin-top: 20px; }
+  .section > .accuracy-note:last-child,
+  .section > .modern-link:last-child { margin-bottom: 20px; }
 </style>
 </head>
 <body>

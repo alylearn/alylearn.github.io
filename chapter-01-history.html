@@ -414,6 +414,27 @@
     .sec-body { padding: 16px 18px; }
     .sec-header { padding: 16px 18px 14px; }
   }
+
+  /* Fix: content directly in .section gets padding */
+  .section > .prose,
+  .section > .concept-block,
+  .section > .modern-link,
+  .section > .terms-grid,
+  .section > .pullquote,
+  .section > .timeline,
+  .section > .accuracy-note,
+  .section > .funny-box,
+  .section > .warning-block,
+  .section > .vocab-source-banner,
+  .section > .phrase-card,
+  .section > .phrase-group,
+  .section > p {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .section > .prose:first-of-type { margin-top: 20px; }
+  .section > .accuracy-note:last-child,
+  .section > .modern-link:last-child { margin-bottom: 20px; }
 </style>
 </head>
 <body>
