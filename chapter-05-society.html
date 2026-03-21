@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第五章 · 日本社会文化与地域差异 — 日语知识宝典</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;700&display=swap');
+
+  :root {
+    --ink: #0e1a10;
+    --paper: #f0f5f0;
+    --accent: #2a6a4a;
+    --accent-light: #e0f0e8;
+    --gold: #7a6018;
+    --gold-light: #f5f0da;
+    --muted: #5a7060;
+    --border: rgba(42,106,74,0.15);
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Noto Sans SC', sans-serif; font-size: 15px; line-height: 1.9; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: radial-gradient(circle at 20% 20%, rgba(42,106,74,0.04) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(122,96,24,0.03) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; padding: 72px 32px 100px; position: relative; z-index: 1; }
+
+  .ch-header { margin-bottom: 64px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+  .ch-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .ch-num { font-family: 'Noto Serif JP', serif; font-size: 11px; letter-spacing: 4px; color: var(--accent); opacity: 0.8; }
+  .ch-divider { width: 24px; height: 1px; background: var(--accent); opacity: 0.4; }
+  .ch-tag { font-size: 10px; letter-spacing: 2px; color: var(--accent); background: var(--accent-light); padding: 3px 10px; font-weight: 700; }
+  .ch-title { font-family: 'Shippori Mincho B1', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 700; line-height: 1.3; letter-spacing: 1px; margin-bottom: 12px; }
+  .ch-title em { color: var(--accent); font-style: normal; }
+  .ch-subtitle { font-size: 13px; color: var(--muted); letter-spacing: 1px; margin-bottom: 20px; }
+  .ch-intro { font-size: 14.5px; line-height: 1.95; color: #1a2a1a; padding: 20px 24px; background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 0 2px 2px 0; }
+
+  .accuracy-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .accuracy-badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; font-weight: 700; letter-spacing: 1px; }
+  .badge-stable { background: #e8f5e9; color: #2e7d32; }
+  .badge-changing { background: #fff8e1; color: #f57f17; }
+  .badge-lens { background: #e8eaf6; color: #3949ab; }
+
+  .section { margin-bottom: 64px; opacity: 0; transform: translateY(24px); animation: rise 0.5s forwards; }
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.15s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.25s; }
+  .section:nth-child(5) { animation-delay: 0.3s; }
+  .section:nth-child(6) { animation-delay: 0.35s; }
+  @keyframes rise { to { opacity:1; transform:translateY(0); } }
+
+  .sec-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .sec-num { font-family: 'Noto Serif JP', serif; font-size: 32px; font-weight: 700; color: var(--accent); opacity: 0.18; line-height: 1; min-width: 48px; }
+  .sec-title-wrap { flex: 1; }
+  .sec-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 4px; opacity: 0.8; }
+  .sec-title { font-family: 'Shippori Mincho B1', serif; font-size: clamp(17px, 2.5vw, 22px); font-weight: 700; line-height: 1.4; }
+  .sec-subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  .prose { font-size: 14.5px; line-height: 2; color: #1a2a1a; margin-bottom: 20px; }
+
+  .concept-block { margin: 24px 0; padding: 20px 24px; background: var(--white); border: 1px solid var(--border); border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .concept-label { font-size: 10px; letter-spacing: 3px; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+  .concept-title { font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
+  .concept-body { font-size: 13.5px; line-height: 1.9; color: #1a2a1a; }
+
+  .modern-link { margin: 24px 0; padding: 16px 20px; background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 0 2px 2px 0; }
+  .modern-link-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  .modern-link-body { font-size: 13.5px; line-height: 1.8; color: #1a2a1a; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+  .term-card { background: var(--white); border: 1px solid var(--border); padding: 14px 16px; border-radius: 2px; }
+  .term-jp { font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
+  .term-reading { font-size: 11px; color: var(--muted); margin-bottom: 6px; letter-spacing: 1px; }
+  .term-zh { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .term-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* Season cards */
+  .season-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 20px 0; }
+  @media(max-width:500px) { .season-grid { grid-template-columns: 1fr; } }
+  .season-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid; padding: 16px; border-radius: 0 0 2px 2px; }
+  .season-card.spring { border-top-color: #e8607a; }
+  .season-card.summer { border-top-color: #60a870; }
+  .season-card.autumn { border-top-color: #c87820; }
+  .season-card.winter { border-top-color: #6090c8; }
+  .season-name { font-family: 'Noto Serif JP', serif; font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+  .season-highlight { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .season-desc { font-size: 12.5px; color: var(--muted); line-height: 1.65; }
+
+  /* Region comparison */
+  .region-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  @media(max-width:500px) { .region-compare { grid-template-columns: 1fr; } }
+  .region-card { background: var(--white); border: 1px solid var(--border); padding: 16px; border-radius: 2px; }
+  .region-name { font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .region-badge { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 10px; margin-bottom: 8px; font-weight: 700; }
+  .badge-kanto { background: #e8eef8; color: #2a3a8a; }
+  .badge-kansai { background: #fce8e8; color: #8a2a2a; }
+  .region-traits { font-size: 13px; line-height: 1.8; color: #2a2a2a; }
+  .region-example { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+  .funny-box { margin: 24px 0; padding: 18px 20px; background: var(--gold-light); border: 1px solid rgba(122,96,24,0.2); border-radius: 2px; }
+  .funny-label { font-size: 10px; letter-spacing: 2px; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+  .funny-body { font-size: 13.5px; line-height: 1.85; color: #3a2a10; }
+
+  .compare-table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 13.5px; }
+  .compare-table th { background: var(--accent); color: white; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 11px; letter-spacing: 1px; }
+  .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); line-height: 1.65; vertical-align: top; }
+  .compare-table tr:nth-child(even) td { background: rgba(42,106,74,0.03); }
+
+  .accuracy-note { margin-top: 20px; padding: 12px 16px; background: #f8f8f8; border: 1px dashed rgba(0,0,0,0.12); border-radius: 2px; font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .accuracy-note strong { color: var(--ink); }
+  .sec-divider { text-align: center; margin: 48px 0; color: var(--accent); font-size: 14px; letter-spacing: 8px; opacity: 0.2; }
+  .pullquote { margin: 28px 0; padding: 0 0 0 20px; border-left: 4px solid var(--accent); font-family: 'Shippori Mincho B1', serif; font-size: 16px; line-height: 1.8; color: var(--accent); }
+  .nav-hint { margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+  .nav-hint a { color: var(--accent); text-decoration: none; font-weight: 700; }
+  @media(max-width:600px) { .page { padding: 40px 20px 80px; } .terms-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="ch-header">
+    <div class="ch-meta">
+      <span class="ch-num">第五章 · LAYER 03</span>
+      <span class="ch-divider"></span>
+      <span class="ch-tag">SOCIETY & REGION · 真实日本</span>
+    </div>
+    <h1 class="ch-title">日本社会文化<br><em>与地域差异</em></h1>
+    <div class="ch-subtitle">理解日本人行为背后的文化土壤，以及"日本"其实有很多种</div>
+    <div class="ch-intro">
+      很多人说的"日本人"，其实是"东京人"——或者更准确地说，是媒体塑造的"标准日本人"形象。但真实的日本，关西人和关东人的性格天壤之别，冲绳和北海道的文化几乎像两个国家。<br><br>
+      本章先讲日本社会文化的核心机制，再讲地域差异——帮你建立一个立体的、有层次的"真实日本"认知。
+    </div>
+    <div class="accuracy-row">
+      <span class="accuracy-badge badge-stable">✓ 核心文化机制较稳定</span>
+      <span class="accuracy-badge badge-changing">⚡ 职场文化正在变化</span>
+      <span class="accuracy-badge badge-lens">◎ 地域描述有概括风险</span>
+    </div>
+  </header>
+
+  <!-- 5.1 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">5.1</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">READING THE AIR</div>
+        <div class="sec-title">「空気を読む」— 读懂气氛，日本人的第一社交技能</div>
+        <div class="sec-subtitle">本音与建前，日本人的双轨社交系统</div>
+      </div>
+    </div>
+
+    <p class="prose">「空気を読む（くうきをよむ）」，字面意思是"读空气"，实际意思是：感知当前场合的氛围和众人的期待，调整自己的言行以维护集体和谐。这是日本人从小接受的最重要的社交教育之一。</p>
+
+    <p class="prose">不会读空气的人叫「KY（ケーワイ）」——这是「空気読めない（くうきよめない）」的缩写，意思是"读不懂空气的人"。在日本，被说KY是一种相当严重的社交评价，意味着这个人缺乏基本的群体意识。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">核心概念</div>
+      <div class="concept-title">本音（ほんね）vs 建前（たてまえ）</div>
+      <div class="concept-body">
+        这是理解日本人社交行为最重要的一对概念：<br><br>
+        <strong>本音（ほんね）</strong>：真心话，内心真实的想法和感受<br>
+        <strong>建前（たてまえ）</strong>：表面话，符合社会期待和场合规范的表达<br><br>
+        在日本的社交场合，大多数人表达的是建前，而非本音。这不是"虚伪"，而是一种维护集体和谐的社交规范——你的本音可能会破坏气氛，伤害他人，所以要包装成建前再表达。<br><br>
+        <strong>举例：</strong><br>
+        · 同事提出一个不好的方案，建前：「なるほど、面白い考えですね（原来如此，是个有趣的想法呢）」/ 本音：这个方案行不通<br>
+        · 被问到不想参加的聚会，建前：「ちょっと予定が…（我有点事…）」/ 本音：我不想去<br><br>
+        真正高明的日本人沟通，是在建前里嵌入让对方能意会本音的信号，而不是直接说本音。
+      </div>
+    </div>
+
+    <div class="pullquote">
+      日本人的沟通有两层：<br>说出来的话是给大家听的，<br>没说出来的话才是给你的。
+    </div>
+
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-jp">空気を読む</div>
+        <div class="term-reading">くうきをよむ</div>
+        <div class="term-zh">读空气</div>
+        <div class="term-desc">感知场合氛围，调整言行以维护集体和谐，日本最重要的社交技能</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">KY</div>
+        <div class="term-reading">ケーワイ</div>
+        <div class="term-zh">不会读空气的人</div>
+        <div class="term-desc">「空気読めない」的缩写，是相当负面的社交评价</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">同調圧力</div>
+        <div class="term-reading">どうちょうあつりょく</div>
+        <div class="term-zh">从众压力</div>
+        <div class="term-desc">要求与集体保持一致的社会压力，是日本集体主义的负面表现</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">出る杭は打たれる</div>
+        <div class="term-reading">でるくいはうたれる</div>
+        <div class="term-zh">出头的椽子先烂</div>
+        <div class="term-desc">日本谚语，意为过于突出的人会遭到打压，反映集体主义对个性的压制</div>
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>「同調圧力」的两面性</strong>：读空气和从众压力是同一枚硬币的两面。它维持了日本社会的秩序与和谐，让公共场所安静整洁；但它同时压抑了个性表达，让很多日本人有说不出口的真实感受。近年日本年轻人开始质疑这种压力，"自分らしく生きる（做真实的自己）"成为一种新的价值追求。<br><br>
+        <strong>职场应用</strong>：在与日本人共事时，学会"读空气"意味着：在开会时察觉到有人皱眉但没说话；在餐厅时注意是否所有人都吃饱了而不只是自己；在讨论时感知到某人其实不同意但没有直说。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 5.2 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">5.2</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">WORKPLACE CULTURE</div>
+        <div class="sec-title">職場文化 — 加班、前辈制度与名片礼仪</div>
+        <div class="sec-subtitle">在日本职场，你需要懂的不只是工作技能</div>
+      </div>
+    </div>
+
+    <p class="prose">日本职场文化以其独特性著称——等级森严、礼仪复杂、加班普遍。但这些特征正处于快速变化中。2026年的日本职场，是传统与变革并存的状态。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">核心制度</div>
+      <div class="concept-title">先輩・後輩（せんぱい・こうはい）制度</div>
+      <div class="concept-body">
+        比你早进公司（或早入学）的人是先輩，你要对他们表示尊重；比你晚的是後輩，你对他们有引导责任。这套关系来自武士时代的主从关系，贯穿日本教育和职场。<br><br>
+        <strong>实际运作方式：</strong><br>
+        · 後輩不会在先輩离开前先离开办公室<br>
+        · 开会时按等级就座，发言也有隐性顺序<br>
+        · 先輩的意见即使错误，也要用迂回方式指出，不能当面直接否定<br>
+        · 新人加入公司后，有一段时期几乎不能表达强烈的个人意见<br><br>
+        <strong>2026年的变化：</strong>科技公司和外资公司越来越多地打破这一制度，推行扁平化管理。但传统大企业（日本传统大企业/JTC）依然严格执行。
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">名片礼仪</div>
+      <div class="concept-title">名刺交換（めいしこうかん）— 一张小卡片，一个大仪式</div>
+      <div class="concept-body">
+        在日本商务场合，交换名片（名刺/めいし）是建立关系的第一步，有一套完整的礼仪规范：<br><br>
+        <strong>递出时：</strong>双手持名片，文字朝向对方，鞠躬，说「よろしくお願いします」<br>
+        <strong>接受时：</strong>双手接过，仔细看一遍，表示认真对待<br>
+        <strong>接过后：</strong>不要当场折叠或在上面写字，这是极大的失礼<br>
+        <strong>会议中：</strong>把名片按座位顺序排在桌上，方便对号入座<br><br>
+        外国人犯错最多的是：接过名片后随手塞进口袋，或者在聊天时拿着名片把玩。这在日本人看来是对对方人格的不尊重。
+      </div>
+    </div>
+
+    <table class="compare-table">
+      <tr>
+        <th>职场行为</th>
+        <th>日本传统做法</th>
+        <th>2026年变化趋势</th>
+      </tr>
+      <tr>
+        <td>加班</td>
+        <td>在上司走之前不能走，加班=努力的象征</td>
+        <td>働き方改革后强制限制，但文化惯性仍在</td>
+      </tr>
+      <tr>
+        <td>称呼</td>
+        <td>职位+さん，绝不直呼名字</td>
+        <td>创业公司/外资开始推行名字+さん</td>
+      </tr>
+      <tr>
+        <td>意见表达</td>
+        <td>会议上不轻易发言，先观察</td>
+        <td>年轻一代开始更积极发声</td>
+      </tr>
+      <tr>
+        <td>跳槽</td>
+        <td>终身雇用制，跳槽被视为不忠诚</td>
+        <td>转职（てんしょく）文化快速兴起</td>
+      </tr>
+      <tr>
+        <td>报告方式</td>
+        <td>報連相（ほうれんそう）：频繁汇报、联络、商量</td>
+        <td>基本保留，但节奏加快</td>
+      </tr>
+    </table>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>日本职场文化变化可搜索「働き方改革 現状」获取最新报道。名片礼仪等传统规范可参考日本商工会议所等官方机构的商务礼仪指南。
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 5.3 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">5.3</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">SEASONAL CULTURE</div>
+        <div class="sec-title">季節文化 — 日本人的时间观是按四季运转的</div>
+        <div class="sec-subtitle">每个季节都有它专属的仪式感</div>
+      </div>
+    </div>
+
+    <p class="prose">日本人对季节的敏感度在全世界范围内都极为罕见。这不只是"喜欢自然"，而是一种深入骨髓的时间观——每个季节有它专属的风景、食物、节日、心情，错过了就只能等明年。</p>
+
+    <div class="season-grid">
+      <div class="season-card spring">
+        <div class="season-name">春 · 春（はる）</div>
+        <div class="season-highlight">お花見（おはなみ）</div>
+        <div class="season-desc">樱花季是日本最重要的集体仪式。在樱花树下铺席野餐、喝酒欢聚，短暂的花期（约一周）赋予聚会"此刻稍纵即逝"的情感浓度。日本气象局每年发布"桜前線（さくらぜんせん）"——樱花开放线预报。</div>
+      </div>
+      <div class="season-card summer">
+        <div class="season-name">夏 · 夏（なつ）</div>
+        <div class="season-highlight">夏祭り・花火大会・お盆</div>
+        <div class="season-desc">夏天是节日最密集的季节：各地夏祭（穿浴衣/跳盆踊）、烟火大会（花火/はなび）、以及お盆省亲。"夏の思い出（なつのおもいで）"在日本文化里有极高的情感重量。</div>
+      </div>
+      <div class="season-card autumn">
+        <div class="season-name">秋 · 秋（あき）</div>
+        <div class="season-highlight">紅葉狩り・食欲の秋</div>
+        <div class="season-desc">红叶（もみじ）鉴赏与春天赏樱并列为日本最重要的自然仪式。"食欲の秋（しょくよくのあき）"——秋天是食欲大开的季节，松茸、新米、秋刀鱼……日本人对秋季食材几乎有执念。</div>
+      </div>
+      <div class="season-card winter">
+        <div class="season-name">冬 · 冬（ふゆ）</div>
+        <div class="season-highlight">年末年始・クリスマス</div>
+        <div class="season-desc">年末是日本最忙碌的时节：大掃除（大扫除）、寄送年賀状（新年贺卡）、忘年会（年终聚会）。新年前后（年末年始）是日本全年最重要的假期，神社参拜人潮达到顶峰。</div>
+      </div>
+    </div>
+
+    <div class="funny-box">
+      <div class="funny-label">旬（しゅん）— 日本人对食材时令的执念</div>
+      <div class="funny-body">
+        「旬」这个字的意思是"当令时节"，代表食材最鲜美的那段时间。日本人对食材时令的执着令外国人咋舌——春天要吃筍（たけのこ/竹笋）和菜の花，夏天吃鱼素麵（ひやむぎ），秋天要吃秋刀鱼（さんま）和松茸，冬天要吃螃蟹和河豚（ふぐ）。<br><br>
+        "旬を外れた食材"（不当令的食材）在很多日本料理人眼里是不够尊重食材的行为。这种对时令的执着，既是神道教自然崇拜的延伸，也是日本料理追求极致的体现。
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>年賀状文化的变化</strong>：传统上日本人会在12月底寄送手写或印刷的新年贺卡，确保对方在1月1日收到。这个习俗在年轻一代中迅速衰落，被LINE贺图取代。日本邮政的年賀状业务量近十年持续大幅下降，这被很多日本人视为传统文化消逝的象征。<br><br>
+        <strong>季节限定（限定品）文化</strong>：便利店和食品品牌大量推出季节限定产品，把季节感与消费行为深度绑定。这是日本将传统时令文化商业化的典型案例，也解释了为什么日本消费者对"季节限定"有如此强烈的购买冲动。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 5.4 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">5.4</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">OMOTENASHI</div>
+        <div class="sec-title">「おもてなし」— 日本服务业为什么让人震惊</div>
+        <div class="sec-subtitle">待客之道的哲学根源，与被过度消费的风险</div>
+      </div>
+    </div>
+
+    <p class="prose">「おもてなし」是2013年东京奥运会申办演讲后风靡全球的词汇，意思是"待客之道"——以真诚、细心、不求回报的方式款待客人。日本的服务业确实让大多数外国游客震惊：便利店店员的标准化微笑、餐厅服务员的极度专注、酒店工作人员对细节的照顾……</p>
+
+    <div class="concept-block">
+      <div class="concept-label">深层逻辑</div>
+      <div class="concept-title">为什么日本服务业不接受小费？</div>
+      <div class="concept-body">
+        在美国，小费是表达感谢的方式；但在日本，给服务员小费可能被视为<strong>一种轻视</strong>——暗示对方的服务是可以用钱衡量的，而不是出于真诚的待客之心。<br><br>
+        「おもてなし」的哲学核心是：服务不是商品交换，而是<strong>人对人的真诚照顾</strong>，不求额外的回报。这与"顾客是神様（かみさま）"的观念一起，构成了日本服务业文化的基础。<br><br>
+        <strong>但这套哲学有代价：</strong><br>
+        · 服务业工作者承受极大的心理压力，需要长期压抑个人情绪<br>
+        · "顾客是神样"有时被顾客滥用，演变成「カスタマーハラスメント（カスハラ）」——客户对服务人员的骚扰和辱骂，是日本近年重要的社会议题
+      </div>
+    </div>
+
+    <div class="funny-box">
+      <div class="funny-label">被过度消费的「おもてなし」</div>
+      <div class="funny-body">
+        2013年申奥演讲之后，「おもてなし」变成了日本对外宣传的标志性词汇。但很多日本年轻人，尤其是服务业从业者，对这个词有复杂的感情——它被当成"日本精神"来包装，但从业者知道这背后是低薪、高强度、和被要求无条件忍受不合理顾客的现实。<br><br>
+        这个词在外国人眼里是褒义词，在日本服务业员工眼里，有时候是另一层压力的来源。
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>「カスタマーハラスメント」问题可搜索日本厚生労働省（劳动省）相关报告，近年已出台指导方针。「おもてなし」的过度消费话题在日本Twitter有大量真实讨论。
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 5.5 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">5.5</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">REGIONAL DIFFERENCES · 新增</div>
+        <div class="sec-title">関東 vs 関西 — 日本其实有两种性格</div>
+        <div class="sec-subtitle">你以为你了解"日本人"，但你可能只了解"东京人"</div>
+      </div>
+    </div>
+
+    <p class="prose">最常见的误解：把东京等同于日本全部。实际上，日本国内的地域差异之大，有时候超过中国南北差异。关东人（かんとうじん）和关西人（かんさいじん）的性格、说话方式、幽默感，几乎是两套系统。</p>
+
+    <div class="region-compare">
+      <div class="region-card">
+        <div class="region-name">関東（かんとう）</div>
+        <div class="region-badge badge-kanto">以东京为中心</div>
+        <div class="region-traits">
+          · 说话相对正式、内敛、保持距离<br>
+          · 公共场合安静，不轻易与陌生人搭话<br>
+          · 自动扶梯靠左站立，右侧留给赶路者<br>
+          · 吃饭时汤里的食材先不说话<br>
+          · 幽默感比较含蓄，不喜欢过度搞笑
+        </div>
+        <div class="region-example">「标准日语」即东京腔，被认为是"正规"日语</div>
+      </div>
+      <div class="region-card">
+        <div class="region-name">関西（かんさい）</div>
+        <div class="region-badge badge-kansai">大阪·京都·神戸</div>
+        <div class="region-traits">
+          · 热情外向，主动跟陌生人搭话<br>
+          · 幽默感强，喜欢自嘲和搞笑（ボケとツッコミ文化）<br>
+          · 自动扶梯靠右站立（与关东相反！）<br>
+          · 讨价还价文化更浓，"まけてや！（便宜点！）"<br>
+          · 说话语速快、语调夸张、大阪腔鲜明
+        </div>
+        <div class="region-example">大阪腔（大阪弁）在日本人眼里自带喜感</div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">更多地域个性</div>
+      <div class="concept-title">日本不只有关东和关西</div>
+      <div class="concept-body">
+        <strong>北海道（ほっかいどう）</strong>：19世纪才大规模开拓，文化比本州年轻得多，性格直爽、开放，受美国西部拓荒精神影响。<br><br>
+        <strong>東北（とうほく）</strong>：日本的"农村腹地"，性格沉稳保守，方言（東北弁）有时连东京人也听不懂。<br><br>
+        <strong>九州（きゅうしゅう）・福岡（ふくおか）</strong>：近年年轻人文化崛起的城市，被认为比东京更有活力、物价更低、人情味更浓。<br><br>
+        <strong>沖縄（おきなわ）</strong>：直到1879年才并入日本版图，原为独立的琉球王国，文化、语言、音乐、食物与本州差异极大，岛民对"日本人"身份的认同也更为复杂。
+      </div>
+    </div>
+
+    <div class="funny-box">
+      <div class="funny-label">自动扶梯站哪边？ — 最容易暴露外地人的细节</div>
+      <div class="funny-body">
+        关东（东京）：靠左站，右侧留行走通道<br>
+        关西（大阪）：靠右站，左侧留行走通道<br><br>
+        这个差异困扰着所有在关东和关西之间来回的日本人，也是新来者最容易搞错的细节。如果你在大阪站了左边，会被周围人无声地"纠正"。
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>地域差异的内容存在过度概括的风险——并非所有大阪人都热情，并非所有东京人都冷漠。本节描述的是统计意义上的倾向，不是铁律。可在YouTube搜索在日华人或日本人讨论地域差异的视频，获取更多一手感受。
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 5.6 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">5.6</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">URBAN VS RURAL · 新增</div>
+        <div class="sec-title">城市 vs 农村 — 两个完全不同的日本</div>
+        <div class="sec-subtitle">东京视角遮蔽了日本的另一半真相</div>
+      </div>
+    </div>
+
+    <p class="prose">日本人口极度向大城市集中，东京都市圈有约3700万人，占全国人口约30%。这种极端的城乡失衡，产生了两种几乎完全不同的日本生活图景。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">核心现象</div>
+      <div class="concept-title">「上京（じょうきょう）」— 进东京，作为年轻人的人生命题</div>
+      <div class="concept-body">
+        「上京」字面意思是"去京城"，在现代指从地方进入东京生活。对很多日本年轻人来说，上京是人生必经的重大决定：<br><br>
+        · 东京集中了日本最多的工作机会、娱乐资源、文化活动<br>
+        · 很多行业的"主流圈子"几乎完全在东京<br>
+        · 娱乐圈、时尚业、媒体业、科技业……想进这些行业，不上京几乎没有机会<br><br>
+        但上京也意味着离开家乡、独自在高房价城市里生活。近年"地方创生（ちほうそうせい）"运动兴起，政府鼓励年轻人回到地方，但收效有限。
+      </div>
+    </div>
+
+    <p class="prose">另一方面，日本农村正在经历严重的人口外流与老龄化。很多地方小镇已经出现了大量空屋（空き家/あきや），政府甚至推出了"0日元空屋认购"计划，把废弃房屋免费送给愿意移居的人。这种景象与东京的繁华形成了极大的反差，共同构成了真实的日本。</p>
+
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-jp">上京</div>
+        <div class="term-reading">じょうきょう</div>
+        <div class="term-zh">进东京</div>
+        <div class="term-desc">从地方移居东京，是日本年轻人最重要的人生决定之一</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">地方創生</div>
+        <div class="term-reading">ちほうそうせい</div>
+        <div class="term-zh">地方创生</div>
+        <div class="term-desc">日本政府振兴地方经济、吸引人口回流的政策，实施多年但效果有限</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">空き家</div>
+        <div class="term-reading">あきや</div>
+        <div class="term-zh">空屋</div>
+        <div class="term-desc">日本农村大量出现的废弃住宅，政府推出低价甚至免费认购计划</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">Uターン・Iターン</div>
+        <div class="term-reading">Uターン・Iターン</div>
+        <div class="term-zh">回乡/移居地方</div>
+        <div class="term-desc">Uターン指回到故乡，Iターン指移居到完全陌生的地方，是近年兴起的生活方式</div>
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>疫情后的变化</strong>：COVID-19让很多东京年轻人重新思考城市生活的价值。远程工作的普及让一部分人选择移居地方，但这个趋势在疫情结束后有所逆转，东京的向心力依然强大。<br><br>
+        <strong>对外国人的机会</strong>：日本地方政府近年开始积极招募外国移居者，提供语言支持和生活补贴。如果你对低成本、慢节奏的日本生活感兴趣，农村日本可能是一个超出预期的选项。
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-hint">
+    <span>← <a href="#">第四章：语言密码</a></span>
+    <span>日語知識寶典 · v2.2</span>
+    <span><a href="#">第六章：真实表达</a> →</span>
+  </div>
+
+</div>
+</body>
+</html>

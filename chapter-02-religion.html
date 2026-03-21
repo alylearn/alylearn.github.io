@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第二章 · 神道教与佛教 — 日语知识宝典</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;700&display=swap');
+
+  :root {
+    --ink: #1a1208;
+    --paper: #f4f0f7;
+    --accent: #3a1e6e;
+    --accent-light: #ede8f7;
+    --gold: #7a5a18;
+    --gold-light: #f5f0da;
+    --muted: #6a6080;
+    --border: rgba(58,30,110,0.13);
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(circle at 80% 20%, rgba(58,30,110,0.04) 0%, transparent 50%),
+                      radial-gradient(circle at 20% 80%, rgba(122,90,24,0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 72px 32px 100px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ch-header {
+    margin-bottom: 64px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ch-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .ch-num { font-family: 'Noto Serif JP', serif; font-size: 11px; letter-spacing: 4px; color: var(--accent); opacity: 0.7; }
+  .ch-divider { width: 24px; height: 1px; background: var(--accent); opacity: 0.3; }
+  .ch-tag { font-size: 10px; letter-spacing: 2px; color: var(--accent); background: var(--accent-light); padding: 3px 10px; font-weight: 700; }
+
+  .ch-title {
+    font-family: 'Shippori Mincho B1', serif;
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .ch-title em { color: var(--accent); font-style: normal; }
+  .ch-subtitle { font-size: 13px; color: var(--muted); letter-spacing: 1px; margin-bottom: 20px; }
+
+  .ch-intro {
+    font-size: 14.5px;
+    line-height: 1.95;
+    color: #2a2038;
+    padding: 20px 24px;
+    background: var(--accent-light);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 2px 2px 0;
+  }
+
+  .accuracy-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .accuracy-badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; font-weight: 700; letter-spacing: 1px; }
+  .badge-stable { background: #e8f5e9; color: #2e7d32; }
+  .badge-changing { background: #fff8e1; color: #f57f17; }
+  .badge-lens { background: #e8eaf6; color: #3949ab; }
+
+  .section { margin-bottom: 64px; opacity: 0; transform: translateY(24px); animation: rise 0.5s forwards; }
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.2s; }
+  .section:nth-child(3) { animation-delay: 0.3s; }
+  .section:nth-child(4) { animation-delay: 0.4s; }
+  @keyframes rise { to { opacity:1; transform:translateY(0); } }
+
+  .sec-header {
+    display: flex; align-items: flex-start; gap: 20px;
+    margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border);
+  }
+  .sec-num { font-family: 'Noto Serif JP', serif; font-size: 32px; font-weight: 700; color: var(--accent); opacity: 0.18; line-height: 1; min-width: 48px; }
+  .sec-title-wrap { flex: 1; }
+  .sec-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 4px; opacity: 0.7; }
+  .sec-title { font-family: 'Shippori Mincho B1', serif; font-size: clamp(17px, 2.5vw, 22px); font-weight: 700; line-height: 1.4; }
+  .sec-subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  .prose { font-size: 14.5px; line-height: 2; color: #2a2018; margin-bottom: 20px; }
+
+  .concept-block {
+    margin: 24px 0; padding: 20px 24px; background: var(--white);
+    border: 1px solid var(--border); border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .concept-label { font-size: 10px; letter-spacing: 3px; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+  .concept-title { font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--accent); }
+  .concept-body { font-size: 13.5px; line-height: 1.85; color: #3a3020; }
+
+  .modern-link { margin: 24px 0; padding: 16px 20px; background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 0 2px 2px 0; }
+  .modern-link-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  .modern-link-body { font-size: 13.5px; line-height: 1.8; color: #2a1838; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+  .term-card { background: var(--white); border: 1px solid var(--border); padding: 14px 16px; border-radius: 2px; }
+  .term-jp { font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
+  .term-reading { font-size: 11px; color: var(--muted); margin-bottom: 6px; letter-spacing: 1px; }
+  .term-zh { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .term-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  .pullquote { margin: 28px 0; padding: 0 0 0 20px; border-left: 4px solid var(--accent); font-family: 'Shippori Mincho B1', serif; font-size: 16px; line-height: 1.8; color: var(--accent); }
+
+  .compare-table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 13.5px; }
+  .compare-table th { background: var(--accent); color: white; padding: 10px 14px; text-align: left; font-weight: 700; letter-spacing: 1px; font-size: 11px; }
+  .compare-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); line-height: 1.6; vertical-align: top; }
+  .compare-table tr:nth-child(even) td { background: rgba(58,30,110,0.03); }
+
+  .funny-box { margin: 24px 0; padding: 18px 20px; background: var(--gold-light); border: 1px solid rgba(122,90,24,0.2); border-radius: 2px; }
+  .funny-label { font-size: 10px; letter-spacing: 2px; color: var(--gold); font-weight: 700; margin-bottom: 8px; }
+  .funny-body { font-size: 13.5px; line-height: 1.85; color: #3a3010; }
+
+  .accuracy-note { margin-top: 20px; padding: 12px 16px; background: #f8f8f8; border: 1px dashed rgba(0,0,0,0.12); border-radius: 2px; font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .accuracy-note strong { color: var(--ink); }
+
+  .sec-divider { text-align: center; margin: 48px 0; color: var(--accent); font-size: 14px; letter-spacing: 8px; opacity: 0.2; }
+
+  .nav-hint { margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+  .nav-hint a { color: var(--accent); text-decoration: none; font-weight: 700; letter-spacing: 1px; }
+
+  @media(max-width: 600px) { .page { padding: 40px 20px 80px; } .terms-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="ch-header">
+    <div class="ch-meta">
+      <span class="ch-num">第二章 · LAYER 01</span>
+      <span class="ch-divider"></span>
+      <span class="ch-tag">RELIGION & PHILOSOPHY · 精神底色</span>
+    </div>
+    <h1 class="ch-title">神道教与佛教<br><em>日本人的精神底色</em></h1>
+    <div class="ch-subtitle">他们说自己没有宗教信仰，但生活里全是宗教</div>
+    <div class="ch-intro">
+      如果你问一个日本人"你有宗教信仰吗"，大多数人会回答"没有"。但同一个人，新年会去神社参拜，结婚会选教堂或神前式，去世后会用佛教仪式出殡，圣诞节会跟恋人浪漫约会……<br><br>
+      这不是矛盾，而是日本宗教文化最独特的地方：<strong>宗教在日本不是信仰体系，而是生活仪式。</strong> 你不需要"信"，你只需要"做"。<br><br>
+      理解这一点，你才能读懂日本人的很多行为——为什么他们对自然如此敬畏，为什么审美追求"不完美的美"，为什么沉默被视为一种尊重。
+    </div>
+    <div class="accuracy-row">
+      <span class="accuracy-badge badge-stable">✓ 传统部分基本稳定</span>
+      <span class="accuracy-badge badge-lens">◎ 部分为外部观察视角</span>
+    </div>
+  </header>
+
+  <!-- 2.1 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">2.1</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">SHINTO</div>
+        <div class="sec-title">神道教 — 万物有灵的世界观</div>
+        <div class="sec-subtitle">日本最古老的信仰，也是日常生活的隐形框架</div>
+      </div>
+    </div>
+
+    <p class="prose">神道教（しんとう）是日本的本土宗教，没有创始人，没有教义经典，没有统一的教会组织。它的核心信念极其简单：<strong>万物皆有神灵（かみ）</strong>。山有山神，河有河神，树有树神，石头有石神，甚至锅碗瓢盆也可能有神。日本神道里有"八百万神（やおよろずのかみ）"的说法，"八百万"不是具体数字，而是"无穷无尽"的意思。</p>
+
+    <p class="prose">这种万物有灵的世界观，让日本人对自然抱有一种发自内心的敬畏与亲近。樱花开了要去看，红叶来了要去赏，第一场雪要停下来注视——这不只是审美习惯，而是神道教"自然即神圣"信念的日常体现。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">核心概念</div>
+      <div class="concept-title">神社（じんじゃ）— 神灵居住的空间</div>
+      <div class="concept-body">
+        神社是神道教的祭祀场所，在日本全国有约八万座，比便利店还多。神社的标志是<strong>鸟居（とりい）</strong>——那个标志性的红色或木色门框，象征人间与神圣空间的边界，穿过鸟居即进入神域。<br><br>
+        <strong>神社里常见的元素：</strong><br>
+        · 御守（おまもり）：各种功能的护身符，考试合格、恋爱成就、交通安全……<br>
+        · 絵馬（えま）：木制许愿牌，写上愿望挂在神社里<br>
+        · 御神籤（おみくじ）：抽签问吉凶，结果从大吉到大凶<br>
+        · 手水舍（てみずや）：进入神社前用来洗手净身的水槽，象征洁净
+      </div>
+    </div>
+
+    <p class="prose">神道教与天皇制深度绑定。天皇被视为太阳女神天照大神（あまてらすおおみかみ）的后裔，是神道教意义上的最高祭司。这套神圣血脉的叙事在明治时代被政府强化利用，成为军国主义动员的精神基础——这也是二战后盟军要求日本剥离天皇神格的原因之一。</p>
+
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-jp">八百万の神</div>
+        <div class="term-reading">やおよろずのかみ</div>
+        <div class="term-zh">八百万神</div>
+        <div class="term-desc">万物皆有神灵，神道教的核心世界观，"八百万"意为无穷无尽</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">鳥居</div>
+        <div class="term-reading">とりい</div>
+        <div class="term-zh">鸟居</div>
+        <div class="term-desc">神社入口的门形建筑，象征人间与神圣空间的边界</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">初詣</div>
+        <div class="term-reading">はつもうで</div>
+        <div class="term-zh">新年参拜</div>
+        <div class="term-desc">新年第一次参拜神社或寺庙，是日本最重要的全民年度仪式</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">穢れと祓い</div>
+        <div class="term-reading">けがれとはらい</div>
+        <div class="term-zh">污秽与祓除</div>
+        <div class="term-desc">神道教的核心概念：污秽（不洁）需要祓除净化，这是很多仪式的根源</div>
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>每年初詣的规模</strong>：新年前三天，全日本有约一亿人次去神社参拜。这个数字本身就说明了神道仪式的生命力——不需要信仰，只需要习惯。<br><br>
+        <strong>对自然的敏感度</strong>：日本人对季节变化的极度敏感（樱花预报、红叶预报），对食材时令的执着（旬の食材），都是神道"自然即神圣"世界观在日常生活中的延伸。<br><br>
+        <strong>洁净观念</strong>：神道教的「穢れ（けがれ）」（污秽）概念，解释了为什么日本人进门必须换鞋、为什么厕所文化极度发达、为什么食品包装极度精细——干净是一种近乎宗教性的价值。
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>可访问日本神社本厅官网（jinja.or.jp）或NHK World搜索"Shinto"，有大量一手资料。神社数量等数据可在日本文化厅年度统计中核实。
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 2.2 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">2.2</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">BUDDHISM IN JAPAN</div>
+        <div class="sec-title">佛教在日本 — 死亡、轮回与日常仪式</div>
+        <div class="sec-subtitle">神社管"生"，寺庙管"死"——分工明确的宗教体系</div>
+      </div>
+    </div>
+
+    <p class="prose">佛教于6世纪经由朝鲜半岛传入日本，与本土的神道教并行发展了一千多年，形成了独特的"神佛习合（しんぶつしゅうごう）"现象——神道与佛教不是竞争关系，而是分工关系。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">核心概念</div>
+      <div class="concept-title">神社管生，寺庙管死</div>
+      <div class="concept-body">
+        这是理解日本宗教生活最简洁的钥匙：<br><br>
+        <strong>神社（神道教）</strong> → 处理生命中"积极"的事：<br>
+        出生祝福（お宫参り）/ 七五三（儿童成长祈愿）/ 结婚（神前式）/ 新年祈福 / 开业祈愿……<br><br>
+        <strong>寺庙（佛教）</strong> → 处理生命中"终结"的事：<br>
+        葬礼 / 法事（忌日法会）/ 扫墓 / お盆（迎接祖先亡灵）……<br><br>
+        同一个日本人，一生中会经历神道仪式也会经历佛教仪式，但他不觉得这有任何矛盾。这种"功能性宗教使用"是日本文化最独特的现象之一。
+      </div>
+    </div>
+
+    <p class="prose">日本佛教与印度或中国的佛教有显著差异。其中最值得注意的是：<strong>日本僧侣可以结婚、吃肉、饮酒</strong>。这在其他佛教传统里是不可想象的，但在日本是正常现象，甚至很多寺庙是父子相传的"家业"。这源于明治时代的"肉食妻帯令（1872年）"——政府为了削弱佛教势力，允许僧侣还俗娶妻，这一政策彻底改变了日本佛教的面貌。</p>
+
+    <div class="funny-box">
+      <div class="funny-label">有趣现象 · 「葬式仏教」</div>
+      <div class="funny-body">
+        很多日本人（尤其是年轻一代）批评当代日本佛教已经变成了「葬式仏教（そうしきぶっきょう）」——只在葬礼和法事时才出现的"商业佛教"。僧侣按法事次数收费，诵经变成了收费服务，信仰内涵被掏空，只剩下仪式外壳。这个说法在日本社会争议颇大，但确实反映了当代日本佛教面临的困境。
+      </div>
+    </div>
+
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-jp">お盆</div>
+        <div class="term-reading">おぼん</div>
+        <div class="term-zh">盂兰盆节</div>
+        <div class="term-desc">每年8月中旬，迎接祖先亡灵返家的节日，是日本最重要的传统节日之一</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">法事</div>
+        <div class="term-reading">ほうじ</div>
+        <div class="term-zh">法事</div>
+        <div class="term-desc">忌日法会，在亲人去世后特定时间举行的佛教仪式</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">戒名</div>
+        <div class="term-reading">かいみょう</div>
+        <div class="term-zh">戒名</div>
+        <div class="term-desc">死后由僧侣赐予的佛教名字，费用视等级从数万到数百万日元不等</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">神仏習合</div>
+        <div class="term-reading">しんぶつしゅうごう</div>
+        <div class="term-zh">神佛习合</div>
+        <div class="term-desc">神道与佛教融合共存的日本独有现象，延续一千多年</div>
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>お盆假期</strong>：每年8月中旬，日本公司会有约一周的"お盆休み"，大量日本人返乡扫墓、参与法事。这是日本最大的人口流动节点之一，新干线和高速公路会出现全年最严重的拥堵。<br><br>
+        <strong>对死亡的态度</strong>：佛教的轮回与无常观让日本人对死亡的态度相对坦然，葬礼仪式隆重而有序。"物の哀れ（ものののあわれ）"——对无常之美的感知——也有佛教无常思想的影子。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 2.3 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">2.3</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">NO RELIGION?</div>
+        <div class="sec-title">「无宗教」的宗教生活</div>
+        <div class="sec-subtitle">日本人如何同时"信"两种宗教却说自己没有信仰</div>
+      </div>
+    </div>
+
+    <p class="prose">调查数据显示，日本人中自称有宗教信仰的比例长期低于30%，很多人明确说自己"没有宗教（むしゅうきょう）"。但同时，每年初詣参拜人次超过一亿，几乎每个日本家庭都有佛坛或神棚……</p>
+
+    <p class="prose">这个矛盾的根源在于：<strong>日本人对"宗教"这个词的理解，和中国人不同。</strong> 在日本人的语境里，"有宗教"往往意味着"加入某个排他性的教团，狂热地信仰某个教义"——这让他们联想到奥姆真理教等邪教事件。相比之下，过节去神社、葬礼用佛教，那是"文化习俗"，不是"宗教信仰"。</p>
+
+    <div class="compare-table-wrap" style="overflow-x:auto; margin: 20px 0;">
+      <table class="compare-table">
+        <tr>
+          <th>场合</th>
+          <th>使用的宗教</th>
+          <th>日本人怎么看待它</th>
+        </tr>
+        <tr>
+          <td>新年参拜（初詣）</td>
+          <td>神道教</td>
+          <td>年度习俗，祈求新年平安</td>
+        </tr>
+        <tr>
+          <td>婚礼</td>
+          <td>神道式 或 教堂式</td>
+          <td>喜欢哪个形式就选哪个，跟信仰无关</td>
+        </tr>
+        <tr>
+          <td>圣诞节</td>
+          <td>基督教（仪式外壳）</td>
+          <td>浪漫约会节日，跟基督教完全无关</td>
+        </tr>
+        <tr>
+          <td>葬礼</td>
+          <td>佛教</td>
+          <td>家族传统，大多数人不会选择改变</td>
+        </tr>
+        <tr>
+          <td>七五三</td>
+          <td>神道教</td>
+          <td>儿童成长的文化仪式</td>
+        </tr>
+        <tr>
+          <td>お盆</td>
+          <td>佛教</td>
+          <td>祭祖假期，回家团聚</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="pullquote">
+      在日本，宗教是一个容器，<br>不同的人生节点用不同的容器装，<br>容器本身不重要，仪式感才重要。
+    </div>
+
+    <div class="funny-box">
+      <div class="funny-label">真实对话场景</div>
+      <div class="funny-body">
+        外国人：「你是佛教徒还是神道教徒？」<br>
+        日本人：「我没有宗教信仰。」<br>
+        外国人：「但你刚才说新年要去神社……」<br>
+        日本人：「那是习俗啊，不是信仰。」<br><br>
+        这个对话在日本随处可见。对日本人来说，这完全不矛盾。
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>1995年奥姆真理教事件的影响</strong>：地铁沙林毒气事件之后，日本社会对"加入宗教团体"的警惕性极度上升。在街上被邀请参加宗教活动，大多数日本人会感到强烈不适。这进一步强化了"我没有宗教"的自我认知，即使他们每天在家对着佛坛合掌。<br><br>
+        <strong>对中国人的启示</strong>：中国人有时会误解日本人的宗教行为，认为他们"表里不一"或"迷信"。但用"功能性仪式"这个框架来理解，会发现日本人的宗教生活其实极度务实——不问"信什么"，只问"这个仪式有没有意义"。
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>日本NHK和读卖新闻每年都有关于日本人宗教意识的调查数据，可搜索「日本人 宗教意識 調査」获取最新数据。
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 2.4 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">2.4</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">ZEN & AESTHETICS</div>
+        <div class="sec-title">禅と侘寂 — 日本美学的哲学根源</div>
+        <div class="sec-subtitle">不完美才是真正的美，空白才是真正的丰满</div>
+      </div>
+    </div>
+
+    <p class="prose">如果说神道教给了日本人"万物有灵"的感知方式，那禅宗（ぜんしゅう）则给了日本人一套审美哲学。禅宗约在12世纪传入日本，迅速被武士阶级和艺术家吸收，深刻影响了茶道、花道、能剧、书法、庭园设计，乃至建筑和日常器物的美学。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">核心美学概念 · 一</div>
+      <div class="concept-title">侘寂（わびさび）— 不完美的美</div>
+      <div class="concept-body">
+        「侘（わび）」+ 「寂（さび）」，是日本最难翻译的美学概念之一。<br><br>
+        <strong>侘（わび）</strong>：简素、朴拙、不完整之美。一个手工陶碗，釉色不均匀，形状微微歪斜，反而比机器批量生产的完美碗更有美感。<br><br>
+        <strong>寂（さび）</strong>：时间流逝、岁月痕迹之美。生锈的铁器、斑驳的石灯笼、褪色的木板——这些不是"破旧"，而是时间馈赠的美。<br><br>
+        合在一起，侘寂是一种<strong>接受无常、拥抱不完美、在消逝中寻找美</strong>的世界观。这与西方追求永恒完美的美学观念截然相反。
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">核心美学概念 · 二</div>
+      <div class="concept-title">物の哀れ（もののあわれ）— 物哀</div>
+      <div class="concept-body">
+        "物之哀愁"——对事物流逝之美的感知与感动。<br><br>
+        樱花之所以是日本文化中最重要的象征，不只是因为它美，而是因为它<strong>短暂</strong>——开放不过一两周，然后凋落。正是这种转瞬即逝，让它的美带上了令人心动的哀愁。<br><br>
+        「物の哀れ」最早由平安时代文学家本居宣长（もとおりのりなが）提出，用来描述《源氏物语》的核心情感。它深深嵌入了日本人的情感结构：欣赏美的同时，感受到它终将消逝的悲哀，这种复合情感本身就是一种美。
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">核心美学概念 · 三</div>
+      <div class="concept-title">間（ま）— 空白即内容</div>
+      <div class="concept-body">
+        「間」是日语里一个极难翻译的概念，字面意思是"间隙/空白/间隔"，但它在日本文化中的含义远不止于此。<br><br>
+        在音乐里，「間」是音符之间的停顿，是让音乐呼吸的空间；<br>
+        在对话里，「間」是沉默，是让对方感受到你在认真思考；<br>
+        在建筑里，「間」是空旷的庭院，是让视线和心灵休息的地方；<br>
+        在书法里，「間」是留白，是让笔画有张力的负空间。<br><br>
+        西方设计哲学追求"填满"，日本美学追求"留白"。理解「間」，才能理解为什么日本的设计、音乐、建筑会给人"呼吸感"。
+      </div>
+    </div>
+
+    <p class="prose">这三个美学概念——侘寂、物哀、間——不是独立的理论，而是同一种世界观的不同面向：<strong>接受无常，珍视当下，在缺失与空白中找到最深的丰盛。</strong></p>
+
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-jp">侘寂</div>
+        <div class="term-reading">わびさび</div>
+        <div class="term-zh">侘寂</div>
+        <div class="term-desc">不完美之美与时间痕迹之美，日本最核心的美学概念</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">物の哀れ</div>
+        <div class="term-reading">もののあわれ</div>
+        <div class="term-zh">物哀</div>
+        <div class="term-desc">对事物流逝之美的感知，日本文学与情感文化的核心</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">間</div>
+        <div class="term-reading">ま</div>
+        <div class="term-zh">间</div>
+        <div class="term-desc">空白、间隔、停顿——在日本美学中，空白本身是有意义的内容</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">金継ぎ</div>
+        <div class="term-reading">きんつぎ</div>
+        <div class="term-zh">金继</div>
+        <div class="term-desc">用金粉修复破损陶器的工艺，裂缝被视为美而非缺陷，是侘寂美学的完美体现</div>
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>设计哲学</strong>：无印良品（MUJI）、苹果联合设计师深泽直人、建筑师安藤忠雄……这些在全球有影响力的日本设计，都有侘寂与「間」的影子——极度克制，留有余地，让使用者自己填入意义。<br><br>
+        <strong>金继（きんつぎ）的全球流行</strong>：近年这种用金粉修复破损陶器的工艺在全球走红，背后是西方人对"接受不完美"这一理念的渴望。但对日本人来说，这不是新潮流，而是几百年的日常智慧。<br><br>
+        <strong>对话中的沉默</strong>：日本人在对话中比中国人更能接受沉默。沉默不是尴尬，而是在"間"里思考。外国人和日本人交流时常常感到不适的"对话停顿"，其实是「間」的文化表达。
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>「侘寂」「物の哀れ」「間」均有大量学术与通俗读物，中文可搜蒋勋《美的沉思》相关章节，英文可读Leonard Koren《Wabi-Sabi for Artists, Designers, Poets & Philosophers》——但需注意西方作者对这些概念有时存在过度简化。
+    </div>
+  </div>
+
+  <div class="nav-hint">
+    <span>← <a href="#">第一章：历史脉络</a></span>
+    <span>日語知識寶典 · v2.2</span>
+    <span><a href="#">第三章：日语系统</a> →</span>
+  </div>
+
+</div>
+</body>
+</html>

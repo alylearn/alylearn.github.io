@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>第四章 · 日语里藏着的文化密码 — 日语知识宝典</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Shippori+Mincho+B1:wght@400;700&display=swap');
+
+  :root {
+    --ink: #1a1a0e;
+    --paper: #f5f2e8;
+    --accent: #a07818;
+    --accent-light: #f5edcc;
+    --accent2: #1e4a7a;
+    --muted: #7a7050;
+    --border: rgba(160,120,24,0.18);
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Noto Sans SC', sans-serif; font-size: 15px; line-height: 1.9; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: radial-gradient(circle at 85% 15%, rgba(160,120,24,0.05) 0%, transparent 50%),
+                      radial-gradient(circle at 15% 85%, rgba(30,74,122,0.04) 0%, transparent 50%);
+    pointer-events: none; z-index: 0;
+  }
+
+  .page { max-width: 780px; margin: 0 auto; padding: 72px 32px 100px; position: relative; z-index: 1; }
+
+  .ch-header { margin-bottom: 64px; padding-bottom: 40px; border-bottom: 1px solid var(--border); }
+  .ch-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .ch-num { font-family: 'Noto Serif JP', serif; font-size: 11px; letter-spacing: 4px; color: var(--accent); opacity: 0.8; }
+  .ch-divider { width: 24px; height: 1px; background: var(--accent); opacity: 0.4; }
+  .ch-tag { font-size: 10px; letter-spacing: 2px; color: var(--accent); background: var(--accent-light); padding: 3px 10px; font-weight: 700; }
+  .ch-title { font-family: 'Shippori Mincho B1', serif; font-size: clamp(24px, 4vw, 36px); font-weight: 700; line-height: 1.3; letter-spacing: 1px; margin-bottom: 12px; }
+  .ch-title em { color: var(--accent); font-style: normal; }
+  .ch-subtitle { font-size: 13px; color: var(--muted); letter-spacing: 1px; margin-bottom: 20px; }
+  .ch-intro { font-size: 14.5px; line-height: 1.95; color: #2a2010; padding: 20px 24px; background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 0 2px 2px 0; }
+
+  .accuracy-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  .accuracy-badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; font-weight: 700; letter-spacing: 1px; }
+  .badge-stable { background: #e8f5e9; color: #2e7d32; }
+  .badge-changing { background: #fff8e1; color: #f57f17; }
+  .badge-fun { background: #fce4ec; color: #c62828; }
+
+  .section { margin-bottom: 64px; opacity: 0; transform: translateY(24px); animation: rise 0.5s forwards; }
+  .section:nth-child(1) { animation-delay: 0.1s; }
+  .section:nth-child(2) { animation-delay: 0.15s; }
+  .section:nth-child(3) { animation-delay: 0.2s; }
+  .section:nth-child(4) { animation-delay: 0.25s; }
+  .section:nth-child(5) { animation-delay: 0.3s; }
+  @keyframes rise { to { opacity:1; transform:translateY(0); } }
+
+  .sec-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+  .sec-num { font-family: 'Noto Serif JP', serif; font-size: 32px; font-weight: 700; color: var(--accent); opacity: 0.2; line-height: 1; min-width: 48px; }
+  .sec-title-wrap { flex: 1; }
+  .sec-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 4px; opacity: 0.8; }
+  .sec-title { font-family: 'Shippori Mincho B1', serif; font-size: clamp(17px, 2.5vw, 22px); font-weight: 700; line-height: 1.4; }
+  .sec-subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  .prose { font-size: 14.5px; line-height: 2; color: #2a2010; margin-bottom: 20px; }
+
+  .concept-block { margin: 24px 0; padding: 20px 24px; background: var(--white); border: 1px solid var(--border); border-radius: 2px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+  .concept-label { font-size: 10px; letter-spacing: 3px; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+  .concept-title { font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 700; margin-bottom: 10px; color: var(--accent); }
+  .concept-body { font-size: 13.5px; line-height: 1.9; color: #2a2010; }
+
+  .modern-link { margin: 24px 0; padding: 16px 20px; background: var(--accent-light); border-left: 3px solid var(--accent); border-radius: 0 2px 2px 0; }
+  .modern-link-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+  .modern-link-body { font-size: 13.5px; line-height: 1.8; color: #2a2010; }
+
+  .terms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 20px 0; }
+  .term-card { background: var(--white); border: 1px solid var(--border); padding: 14px 16px; border-radius: 2px; }
+  .term-jp { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
+  .term-reading { font-size: 11px; color: var(--muted); margin-bottom: 6px; letter-spacing: 1px; }
+  .term-zh { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .term-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* Onomatopoeia grid */
+  .onoma-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin: 20px 0; }
+  .onoma-card { background: var(--white); border: 1px solid var(--border); border-radius: 2px; padding: 12px 14px; text-align: center; }
+  .onoma-jp { font-family: 'Noto Serif JP', serif; font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .onoma-type { font-size: 9px; letter-spacing: 1px; background: var(--accent-light); color: var(--accent); padding: 1px 6px; border-radius: 10px; margin-bottom: 6px; display: inline-block; font-weight: 700; }
+  .onoma-zh { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* Word origin cards */
+  .origin-flow { margin: 20px 0; }
+  .origin-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; padding: 14px 18px; background: var(--white); border: 1px solid var(--border); border-radius: 2px; }
+  .origin-source { font-size: 11px; font-weight: 700; letter-spacing: 1px; min-width: 60px; text-align: center; padding: 4px 8px; border-radius: 2px; }
+  .src-jp { background: #fce8e8; color: #c00; }
+  .src-cn { background: #e8f4e8; color: #0a6a0a; }
+  .origin-arrow { color: var(--accent); font-size: 18px; opacity: 0.5; }
+  .origin-word { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; color: var(--accent); min-width: 80px; }
+  .origin-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; flex: 1; }
+
+  /* Gairaigo cards */
+  .gairaigo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 20px 0; }
+  .gairaigo-card { background: var(--white); border: 1px solid var(--border); border-radius: 2px; padding: 14px; }
+  .gairaigo-jp { font-family: 'Noto Serif JP', serif; font-size: 18px; font-weight: 700; color: var(--accent2); margin-bottom: 4px; }
+  .gairaigo-origin { font-size: 11px; background: #e8eef8; color: var(--accent2); padding: 1px 7px; border-radius: 10px; display: inline-block; margin-bottom: 6px; font-weight: 700; }
+  .gairaigo-zh { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+  .gairaigo-note { font-size: 11.5px; color: var(--muted); line-height: 1.5; }
+
+  /* Ambiguity examples */
+  .ambi-block { background: var(--white); border: 1px solid var(--border); padding: 18px 20px; border-radius: 2px; margin: 16px 0; }
+  .ambi-jp { font-family: 'Noto Serif JP', serif; font-size: 18px; color: var(--accent); margin-bottom: 8px; }
+  .ambi-row { display: flex; gap: 12px; margin-bottom: 6px; flex-wrap: wrap; }
+  .ambi-meaning { font-size: 13px; padding: 3px 10px; background: var(--accent-light); border-radius: 2px; }
+  .ambi-note { font-size: 12px; color: var(--muted); line-height: 1.6; margin-top: 6px; }
+
+  .funny-box { margin: 24px 0; padding: 18px 20px; background: #fff8e6; border: 1px solid rgba(160,120,24,0.25); border-radius: 2px; }
+  .funny-label { font-size: 10px; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+  .funny-body { font-size: 13.5px; line-height: 1.85; color: #3a2a10; }
+
+  .accuracy-note { margin-top: 20px; padding: 12px 16px; background: #f8f8f8; border: 1px dashed rgba(0,0,0,0.12); border-radius: 2px; font-size: 12px; color: var(--muted); line-height: 1.7; }
+  .accuracy-note strong { color: var(--ink); }
+  .sec-divider { text-align: center; margin: 48px 0; color: var(--accent); font-size: 14px; letter-spacing: 8px; opacity: 0.25; }
+  .pullquote { margin: 28px 0; padding: 0 0 0 20px; border-left: 4px solid var(--accent); font-family: 'Shippori Mincho B1', serif; font-size: 16px; line-height: 1.8; color: var(--accent); }
+  .nav-hint { margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--muted); }
+  .nav-hint a { color: var(--accent); text-decoration: none; font-weight: 700; }
+  @media(max-width:600px) { .page { padding: 40px 20px 80px; } .terms-grid { grid-template-columns: 1fr; } .gairaigo-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="ch-header">
+    <div class="ch-meta">
+      <span class="ch-num">第四章 · LAYER 02</span>
+      <span class="ch-divider"></span>
+      <span class="ch-tag">LANGUAGE & CULTURE · 语言密码</span>
+    </div>
+    <h1 class="ch-title">日语里藏着的<em>文化密码</em></h1>
+    <div class="ch-subtitle">从语言现象看日本人的思维方式与美学观</div>
+    <div class="ch-intro">
+      语言不只是交流工具，它是文化的化石。每一个语言现象背后，都藏着这个民族对世界的独特理解方式。<br><br>
+      日语里有些东西，只有日语才有——拟声词的世界、暧昧的美德、借词的双向流动、空白的意义……读懂这些语言现象，你就读懂了一半的日本人。
+    </div>
+    <div class="accuracy-row">
+      <span class="accuracy-badge badge-stable">✓ 语言现象有据可查</span>
+      <span class="accuracy-badge badge-fun">★ 本章趣味性最强</span>
+    </div>
+  </header>
+
+  <!-- 4.1 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">4.1</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">ONOMATOPOEIA</div>
+        <div class="sec-title">拟声词与拟态词 — 日语最迷人的语言系统</div>
+        <div class="sec-subtitle">日语用声音描绘整个世界</div>
+      </div>
+    </div>
+
+    <p class="prose">日语的拟声词拟态词系统（オノマトペ）是世界语言中最丰富的之一。中文有一些拟声词，比如"哗哗""叮叮当当"，但日语的这个系统远比中文发达——日语里有超过<strong>4500个</strong>拟声拟态词，覆盖了从自然声音到心理状态的方方面面。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">两类区分</div>
+      <div class="concept-title">擬音語 vs 擬態語 — 声音 vs 状态</div>
+      <div class="concept-body">
+        <strong>擬音語（ぎおんご）</strong>：模拟真实声音的词<br>
+        如：ドキドキ（心跳声）/ ザーザー（雨声）/ ガラガラ（滚动声）<br><br>
+        <strong>擬態語（ぎたいご）</strong>：描绘状态或感觉的词，不一定有真实声音<br>
+        如：ふわふわ（轻飘飘的感觉）/ きらきら（闪闪发光）/ じっと（静止不动地）<br><br>
+        中文基本只有擬音語，但日语的擬態語让它可以用"声音形式"描绘那些没有声音的状态——这是日语最独特的表达能力之一。
+      </div>
+    </div>
+
+    <div class="onoma-grid">
+      <div class="onoma-card">
+        <div class="onoma-jp">ドキドキ</div>
+        <div class="onoma-type">擬音語</div>
+        <div class="onoma-zh">心跳加速<br>紧张/兴奋时的感觉</div>
+      </div>
+      <div class="onoma-card">
+        <div class="onoma-jp">ふわふわ</div>
+        <div class="onoma-type">擬態語</div>
+        <div class="onoma-zh">轻飘飘<br>蓬松柔软的感觉</div>
+      </div>
+      <div class="onoma-card">
+        <div class="onoma-jp">きらきら</div>
+        <div class="onoma-type">擬態語</div>
+        <div class="onoma-zh">闪闪发光<br>晶莹剔透的状态</div>
+      </div>
+      <div class="onoma-card">
+        <div class="onoma-jp">ぐるぐる</div>
+        <div class="onoma-type">擬態語</div>
+        <div class="onoma-zh">转圈圈<br>反复旋转的状态</div>
+      </div>
+      <div class="onoma-card">
+        <div class="onoma-jp">ぺこぺこ</div>
+        <div class="onoma-type">擬態語</div>
+        <div class="onoma-zh">饿得咕咕叫<br>也表示不停鞠躬</div>
+      </div>
+      <div class="onoma-card">
+        <div class="onoma-jp">そわそわ</div>
+        <div class="onoma-type">擬態語</div>
+        <div class="onoma-zh">坐立不安<br>焦虑等待的状态</div>
+      </div>
+      <div class="onoma-card">
+        <div class="onoma-jp">にこにこ</div>
+        <div class="onoma-type">擬態語</div>
+        <div class="onoma-zh">微笑的样子<br>满脸笑容</div>
+      </div>
+      <div class="onoma-card">
+        <div class="onoma-jp">ぼんやり</div>
+        <div class="onoma-type">擬態語</div>
+        <div class="onoma-zh">发呆<br>模糊不清的状态</div>
+      </div>
+    </div>
+
+    <div class="funny-box">
+      <div class="funny-label">语言趣闻</div>
+      <div class="funny-body">
+        日本的食品广告和菜单上，拟态词的使用达到了艺术境界。一碗拉面可以被描述为「もちもち」（有嚼劲）的面条，「とろとろ」（浓稠）的汤头，「ぷりぷり」（弹牙）的叉烧……光看文字，你几乎能感受到口感。这种用语言传递触感和口感的能力，是日语拟态词给料理文化带来的独特礼物。
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        拟声拟态词在动漫、漫画中大量出现，是日语学习者接触最多的词汇类型之一。但需要注意：漫画里的拟态词往往是夸张化的，真实口语中的使用频率和语境有所不同。在日常对话里，掌握20-30个高频拟态词就能大幅提升表达的生动性。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 4.2 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">4.2</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">AMBIGUITY</div>
+        <div class="sec-title">「曖昧」— 模糊，是日语的美德</div>
+        <div class="sec-subtitle">为什么日本人说话总是不把话说满</div>
+      </div>
+    </div>
+
+    <p class="prose">「曖昧（あいまい）」，意思是模糊、含糊。在很多文化里，"说话模糊"是一种缺点，但在日本文化中，适度的曖昧是一种社交技能——它让双方都保留了"体面的退路"，避免了直接冲突。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">三种曖昧机制</div>
+      <div class="concept-title">日语如何系统性地"留白"</div>
+      <div class="concept-body">
+        <strong>① 语尾助词软化表达</strong><br>
+        日语句尾经常添加助词来模糊判断：<br>
+        「〜ね」：寻求对方认同，把主张变成共识<br>
+        「〜かな」：把确定的想法变成"我在想……"<br>
+        「〜と思います」："我认为……"，比直接断言柔和得多<br><br>
+        <strong>② 主语省略</strong><br>
+        日语大量省略主语，这让很多句子的责任归属变得模糊。"这件事很难"（難しいですね）——是谁觉得难？是说话者？是对方？是客观情况？故意不说清楚。<br><br>
+        <strong>③ 句子悬停（文末を濁す）</strong><br>
+        日本人有时会把句子说到一半故意停下，用「〜が…」「〜けど…」结尾，意思是"但是……（你自己意会）"。听者需要根据语境自行理解这个未说完的意思。
+      </div>
+    </div>
+
+    <p class="prose">最著名的曖昧表达是对拒绝的处理。日本人几乎不会直接说「いいえ（不）」来拒绝一个请求，而是用一系列间接信号传达否定：</p>
+
+    <div class="ambi-block">
+      <div class="ambi-jp">「ちょっと…」</div>
+      <div class="ambi-row">
+        <span class="ambi-meaning">字面意思：有点……</span>
+        <span class="ambi-meaning">实际意思：我不想做 / 这很困难</span>
+      </div>
+      <div class="ambi-note">这是日语最典型的间接拒绝。后面什么都不说，靠"……"传达否定。</div>
+    </div>
+
+    <div class="ambi-block">
+      <div class="ambi-jp">「難しいですね…」</div>
+      <div class="ambi-row">
+        <span class="ambi-meaning">字面意思：这很难呢……</span>
+        <span class="ambi-meaning">实际意思：不行 / 我不会同意</span>
+      </div>
+      <div class="ambi-note">在商务场合极其常见，说"很难"其实等于说"不"，但给双方都留了面子。</div>
+    </div>
+
+    <div class="ambi-block">
+      <div class="ambi-jp">「検討します」</div>
+      <div class="ambi-row">
+        <span class="ambi-meaning">字面意思：我会考虑的</span>
+        <span class="ambi-meaning">实际意思：拒绝，但不明说</span>
+      </div>
+      <div class="ambi-note">在日本职场，这句话几乎等同于委婉拒绝。如果真的感兴趣，日本人会给出更具体的回应。</div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>对中国人的实用提示</strong>：中国人在与日本人合作时最常犯的错误之一，就是把「検討します」理解成真的会考虑，然后等待一个永远不会到来的答复。识别日本人的间接拒绝，是跨文化沟通最重要的技能之一。<br><br>
+        <strong>曖昧的正面价值</strong>：不要单方面批判曖昧。在高密度的社会关系中，曖昧让人际关系更润滑，减少了直接冲突带来的心理伤害。它有代价，但也有价值。
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 4.3 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">4.3</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">WAGO vs KANGO · 词汇来源·第二站</div>
+        <div class="sec-title">和語 vs 漢語 — 中日借词的双向流动</div>
+        <div class="sec-subtitle">中国教了日本汉字，日本用汉字造词传回了中国</div>
+      </div>
+    </div>
+
+    <p class="prose">这是中日语言交流史上最奇特、也最少被人知道的故事：今天中文里大量的现代词汇，其实是日本人发明的。</p>
+
+    <p class="prose">19世纪末明治维新时，日本人面对大量西方概念需要翻译。他们的做法是用汉字组合来创造新词——这些词后来随着日本影响力的扩张，在20世纪初大量传入中国，被中国知识分子直接使用，成为现代中文的基础词汇。</p>
+
+    <div class="concept-block">
+      <div class="concept-label">和製漢語 · 你每天在用的日本造词</div>
+      <div class="concept-title">这些词都是日本人用汉字发明的</div>
+      <div class="concept-body">
+        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; margin-top: 8px;">
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">经济 · 経済</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">文化 · 文化</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">社会 · 社会</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">哲学 · 哲学</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">革命 · 革命</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">民主 · 民主</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">科学 · 科学</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">艺术 · 芸術</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">银行 · 銀行</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">图书馆 · 図書館</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">教育 · 教育</div>
+          <div style="background:var(--accent-light); padding:8px 10px; border-radius:2px; font-size:13px;">共和 · 共和</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="origin-flow">
+      <div class="origin-item">
+        <span class="origin-source src-cn">西方概念</span>
+        <span class="origin-arrow">→</span>
+        <span class="origin-source src-jp">日本翻译</span>
+        <span class="origin-arrow">→</span>
+        <div class="origin-desc">
+          <strong>Economy</strong>「エコノミー」→ 日本人造「経済（けいざい）」→ 传入中文成为"经济"
+        </div>
+      </div>
+      <div class="origin-item">
+        <span class="origin-source src-cn">西方概念</span>
+        <span class="origin-arrow">→</span>
+        <span class="origin-source src-jp">日本翻译</span>
+        <span class="origin-arrow">→</span>
+        <div class="origin-desc">
+          <strong>Philosophy</strong> → 日本人造「哲学（てつがく）」→ 传入中文成为"哲学"
+        </div>
+      </div>
+      <div class="origin-item">
+        <span class="origin-source src-cn">西方概念</span>
+        <span class="origin-arrow">→</span>
+        <span class="origin-source src-jp">日本翻译</span>
+        <span class="origin-arrow">→</span>
+        <div class="origin-desc">
+          <strong>Revolution</strong> → 日本人造「革命（かくめい）」→ 传入中文成为"革命"
+        </div>
+      </div>
+    </div>
+
+    <div class="funny-box">
+      <div class="funny-label">容易混淆的汉字陷阱</div>
+      <div class="funny-body">
+        中日两国用同样的汉字，但意思有时完全不同，称为「日中同形異義語（にっちゅうどうけいいぎご）」：<br><br>
+        · 「娘（むすめ）」日语=女儿，中文=母亲（娘）<br>
+        · 「勉強（べんきょう）」日语=学习，中文=勉强（不情愿）<br>
+        · 「手紙（てがみ）」日语=信件，中文=手纸（卫生纸）<br>
+        · 「大丈夫（だいじょうぶ）」日语=没问题，中文=大丈夫（男子汉）<br>
+        · 「丁寧（ていねい）」日语=礼貌细心，中文=丁宁（叮嘱）<br><br>
+        这些陷阱在中日交流中闹出过无数笑话，也是中文母语者学日语时需要格外注意的地方。
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>「和製漢語」话题有大量中文资料，可搜索"日本造汉语词"核实词汇列表。汉字陷阱可参考《中日同形异义词词典》等专门词典。
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 4.4 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">4.4</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">GAIRAIGO · 词汇来源·第三站</div>
+        <div class="sec-title">片假名的世界 — 外来語と混種語</div>
+        <div class="sec-subtitle">从葡萄牙语的面包，到日本自造的"英语"</div>
+      </div>
+    </div>
+
+    <p class="prose">日语里用片假名书写的外来词（外来語/がいらいご），是现代日语词汇量增长最快的部分。每当有新事物进入日本，日本人的第一反应不是用汉字翻译意思，而是把发音用片假名直接音译过来——这个习惯让日语词汇库不断膨胀。</p>
+
+    <div class="gairaigo-grid">
+      <div class="gairaigo-card">
+        <div class="gairaigo-jp">コーヒー</div>
+        <div class="gairaigo-origin">葡萄牙语 café</div>
+        <div class="gairaigo-zh">咖啡</div>
+        <div class="gairaigo-note">16世纪葡萄牙传教士带入日本的词汇之一</div>
+      </div>
+      <div class="gairaigo-card">
+        <div class="gairaigo-jp">パン</div>
+        <div class="gairaigo-origin">葡萄牙语 pão</div>
+        <div class="gairaigo-zh">面包</div>
+        <div class="gairaigo-note">也来自葡萄牙语，不是英语的bread</div>
+      </div>
+      <div class="gairaigo-card">
+        <div class="gairaigo-jp">アルバイト</div>
+        <div class="gairaigo-origin">德语 Arbeit</div>
+        <div class="gairaigo-zh">兼职工作</div>
+        <div class="gairaigo-note">明治时代从德语传入，德语原意是"劳动"</div>
+      </div>
+      <div class="gairaigo-card">
+        <div class="gairaigo-jp">テレビ</div>
+        <div class="gairaigo-origin">英语 television</div>
+        <div class="gairaigo-zh">电视</div>
+        <div class="gairaigo-note">缩略为前半部分，日本人极擅长缩短外来词</div>
+      </div>
+      <div class="gairaigo-card">
+        <div class="gairaigo-jp">ズボン</div>
+        <div class="gairaigo-origin">法语 jupon</div>
+        <div class="gairaigo-zh">裤子</div>
+        <div class="gairaigo-note">来自法语，不是英语pants，很多人不知道</div>
+      </div>
+      <div class="gairaigo-card">
+        <div class="gairaigo-jp">リュック</div>
+        <div class="gairaigo-origin">德语 Rucksack</div>
+        <div class="gairaigo-zh">背包</div>
+        <div class="gairaigo-note">德语背包，在日语里比英语的backpack更常用</div>
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">词汇来源·第三站延伸 · 混種語と新造語</div>
+      <div class="concept-title">和製英語 — 日本自造的"英语"，英美人听不懂</div>
+      <div class="concept-body">
+        日本人有时候把英语词汇重新组合或改造，创造出英语母语者完全无法理解的"日式英语"（和製英語/わせいえいご）：<br><br>
+        <strong>マンション（mansion）</strong>：日语里指普通的公寓楼，英语里mansion是豪宅<br>
+        <strong>スマート（smart）</strong>：日语里指身材苗条，英语里是聪明<br>
+        <strong>ナイター（nighter）</strong>：夜间棒球比赛，这个词英语里根本不存在<br>
+        <strong>ノート（note）</strong>：笔记本，英语里note只是笔记，不是本子<br><br>
+        <strong>缩略造词（略語/りゃくご）：</strong><br>
+        スマホ = スマートフォン（smartphone）<br>
+        パワハラ = パワーハラスメント（power harassment）<br>
+        エアコン = エアーコンディショナー（air conditioner）<br>
+        コンビニ = コンビニエンスストア（convenience store）<br><br>
+        这类缩略词在现代日语口语里极其普遍，是快速扩展词汇量的捷径之一。
+      </div>
+    </div>
+
+    <div class="accuracy-note">
+      <strong>验证建议：</strong>外来词来源可通过日本语源辞典等在线词典核实，搜索「語源由来辞典」。和製英語列表网上有大量整理，但各来源质量参差，建议交叉验证。
+    </div>
+  </div>
+
+  <div class="sec-divider">· · ·</div>
+
+  <!-- 4.5 -->
+  <div class="section">
+    <div class="sec-header">
+      <div class="sec-num">4.5</div>
+      <div class="sec-title-wrap">
+        <div class="sec-label">MA · THE AESTHETICS OF SPACE</div>
+        <div class="sec-title">「間」の美学 — 空白才是最深的丰满</div>
+        <div class="sec-subtitle">在语言、音乐、建筑、对话里寻找同一种美学</div>
+      </div>
+    </div>
+
+    <p class="prose">「間（ま）」这个字在第二章已经作为美学概念出现过。这里我们专门从语言角度来看它——「間」在日语里不只是一个哲学概念，它实实在在地影响着日本人的说话方式和对话节奏。</p>
+
+    <div class="pullquote">
+      沉默不是对话的中断，<br>而是对话的一部分。<br>「間」是呼吸，没有呼吸，就没有生命。
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">语言中的「間」</div>
+      <div class="concept-title">沉默是如何运作的</div>
+      <div class="concept-body">
+        <strong>对话中的停顿</strong><br>
+        日本人在对话中比大多数文化更能接受停顿。当你说完一句话，日本人不会立刻接话，而是留出一段思考的时间——这在他们看来是尊重，是认真听完后在思考。但对习惯快速接话的中国人来说，这个停顿往往被误读为尴尬或不感兴趣。<br><br>
+        <strong>「間が悪い（まがわるい）」</strong><br>
+        这个表达的字面意思是"间不好"，实际意思是"时机不对/插嘴不合适"。日本人对说话时机的敏感度极高——什么时候说话，和说什么，同等重要。<br><br>
+        <strong>「空気を読む（くうきをよむ）」与「間」的关系</strong><br>
+        "读空气"（第五章会详细讲）在某种程度上就是读「間」——感知对话中的停顿、语气、未说出口的部分，从中读取真实的情感和意图。
+      </div>
+    </div>
+
+    <div class="concept-block">
+      <div class="concept-label">跨领域的「間」</div>
+      <div class="concept-title">同一个概念，在不同领域的体现</div>
+      <div class="concept-body">
+        <strong>音楽（おんがく）</strong>：日本传统音乐（能楽/尺八/筝曲）以大量停顿为特征，音符之间的沉默被视为与音符同等重要的音乐元素。<br><br>
+        <strong>書道（しょどう）</strong>：书法中的留白不是空的，而是让笔画有张力的负空间。一幅好的日本书法，空白与墨迹的比例是经过精心设计的。<br><br>
+        <strong>建築（けんちく）</strong>：日本传统建筑（如茶室）的核心设计原则是创造"呼吸空间"，让视线和心灵有地方休息。极简不是空洞，而是精心的留白。<br><br>
+        <strong>落語（らくご）</strong>：日本的单口相声艺术。高水平的落語师傅用停顿来制造悬念和笑点，「間」是落語最核心的技术之一。
+      </div>
+    </div>
+
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-jp">間</div>
+        <div class="term-reading">ま</div>
+        <div class="term-zh">间·空白</div>
+        <div class="term-desc">时间/空间上的间隔，在日本美学中具有与"实体"同等的意义</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">間が悪い</div>
+        <div class="term-reading">まがわるい</div>
+        <div class="term-zh">时机不对</div>
+        <div class="term-desc">说话或行动的时机不合适，是日本人对"读不懂空气"的另一种表达</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">余白</div>
+        <div class="term-reading">よはく</div>
+        <div class="term-zh">留白</div>
+        <div class="term-desc">设计和书法中的空白区域，日本设计美学中极重视留白的价值</div>
+      </div>
+      <div class="term-card">
+        <div class="term-jp">行間を読む</div>
+        <div class="term-reading">ぎょうかんをよむ</div>
+        <div class="term-zh">读字里行间</div>
+        <div class="term-desc">理解文字背后未明说的含义，是高语境文化（High-context culture）的核心能力</div>
+      </div>
+    </div>
+
+    <div class="modern-link">
+      <div class="modern-link-label">↗ 连接现代日本</div>
+      <div class="modern-link-body">
+        <strong>设计领域的全球影响</strong>：无印良品（MUJI）的设计哲学、深泽直人的"无意识设计"、原研哉的空白美学——这些在全球设计界有影响力的日本设计师，都把「間」的概念应用到现代商业设计中，让"留白"成为一种国际设计语言。<br><br>
+        <strong>对数字时代的反思</strong>：在信息过载的2020年代，很多人开始重新发现「間」的价值。日本"森林浴（しんりんよく）"的全球流行，某种程度上也是对「間」的渴望——用自然的安静，填满被噪音占满的生活空隙。
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-hint">
+    <span>← <a href="#">第三章：日语系统</a></span>
+    <span>日語知識寶典 · v2.2</span>
+    <span><a href="#">第五章：社会文化</a> →</span>
+  </div>
+
+</div>
+</body>
+</html>
