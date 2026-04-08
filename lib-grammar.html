@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日语语法体系 · 阿萨姆</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f7;--white:#ffffff;--ink:#1a1a1a;--soft:#555;--lighter:#999;--border:#e8e8e8;
+  --shadow:0 2px 12px rgba(0,0,0,.08);--shadow-lg:0 4px 24px rgba(0,0,0,.11);
+  --radius:20px;--radius-sm:14px;--radius-xs:10px;
+  --pink:#F9A8C9;--pink-dark:#E8709A;--pink-bg:#FFF0F7;--pink-deep:#C4306A;
+  
+  --c-verb-bg:#E8F5E9;--c-verb:#2E7D32;
+  --c-adj-bg:#E8F4FD;--c-adj:#1565C0;
+  --c-noun-bg:#FFF8E1;--c-noun:#E65100;
+  --c-adv-bg:#F3E5F5;--c-adv:#6A1B9A;
+  --c-par-bg:#FCE4EC;--c-par:#C62828;
+  --c-aux-bg:var(--pink-bg);--c-aux:var(--pink-deep);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang SC',sans-serif;font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+
+
+
+
+
+
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 22px;font-size:13px;font-weight:500;color:var(--soft);text-decoration:none;border-left:3px solid transparent;transition:all .15s;border-radius:0 10px 10px 0;margin-right:12px;}
+.nav-item:hover{background:var(--pink-bg);color:var(--pink-deep);border-left-color:var(--pink);}
+.nav-item.active{background:var(--pink-bg);color:var(--pink-deep);border-left-color:var(--pink-dark);font-weight:700;}
+.nav-icon{width:16px;height:16px;flex-shrink:0;}
+
+.main{flex:1;min-width:0;padding:40px 36px 80px;}
+
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--lighter);text-decoration:none;margin-bottom:24px;transition:color .15s;}
+.back-link:hover{color:var(--pink-deep);}
+
+.page-header{background:var(--white);border-radius:var(--radius);padding:28px 30px;margin-bottom:24px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:18px;}
+.header-icon{width:54px;height:54px;border-radius:16px;background:var(--pink-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.page-title{font-size:22px;font-weight:900;color:var(--ink);}
+.page-desc{font-size:13px;color:var(--soft);margin-top:6px;line-height:1.6;}
+
+.framework-card{background:var(--white);border-radius:var(--radius);padding:28px 20px 20px;margin-bottom:8px;box-shadow:var(--shadow);}
+.framework-title{font-size:15px;font-weight:900;color:var(--ink);text-align:center;margin-bottom:4px;}
+.framework-hint{font-size:12px;color:var(--lighter);text-align:center;margin-bottom:20px;}
+
+.node-clickable{cursor:pointer;transition:opacity .15s;}
+.node-clickable:hover{opacity:.8;}
+
+.section-label{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--lighter);text-transform:uppercase;margin:28px 0 14px;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.card-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+@media(max-width:580px){.card-grid{grid-template-columns:1fr 1fr;}}
+
+.cat-card{border-radius:var(--radius-sm);padding:18px 16px;cursor:pointer;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s;text-decoration:none;display:block;}
+.cat-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.cat-card.verb{background:var(--c-verb-bg);}
+.cat-card.adj {background:var(--c-adj-bg);}
+.cat-card.noun{background:var(--c-noun-bg);}
+.cat-card.adv {background:var(--c-adv-bg);}
+.cat-card.par {background:var(--c-par-bg);}
+.cat-card.aux {background:var(--c-aux-bg);}
+
+.cat-title{font-size:13px;font-weight:900;margin-bottom:6px;}
+.verb .cat-title{color:var(--c-verb);}
+.adj  .cat-title{color:var(--c-adj);}
+.noun .cat-title{color:var(--c-noun);}
+.adv  .cat-title{color:var(--c-adv);}
+.par  .cat-title{color:var(--c-par);}
+.aux  .cat-title{color:var(--c-aux);}
+
+.cat-body{font-size:11px;color:var(--soft);line-height:1.7;}
+.cat-arrow{font-size:11px;font-weight:700;margin-top:6px;display:block;}
+.verb .cat-arrow{color:var(--c-verb);}
+.adj  .cat-arrow{color:var(--c-adj);}
+.noun .cat-arrow{color:var(--c-noun);}
+.adv  .cat-arrow{color:var(--c-adv);}
+.par  .cat-arrow{color:var(--c-par);}
+.aux  .cat-arrow{color:var(--c-aux);}
+
+.hint-row{text-align:center;font-size:12px;color:var(--lighter);margin:12px 0 4px;}
+
+.jlpt-bar{background:var(--c-adv-bg);border-radius:var(--radius-xs);padding:14px 20px;margin-top:12px;text-align:center;box-shadow:var(--shadow);}
+.jlpt-title{font-size:14px;font-weight:900;color:var(--c-adv);}
+.jlpt-desc{font-size:12px;color:var(--soft);margin-top:3px;}
+
+.detail-section{background:var(--white);border-radius:var(--radius-sm);padding:22px;margin-top:14px;box-shadow:var(--shadow);transition:box-shadow .2s;}
+.detail-section:target{box-shadow:0 0 0 3px var(--pink),var(--shadow-lg);}
+
+.detail-title{font-size:15px;font-weight:900;color:var(--ink);margin-bottom:14px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.detail-badge{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.verb  .detail-badge{background:var(--c-verb-bg);color:var(--c-verb);}
+.adj   .detail-badge{background:var(--c-adj-bg); color:var(--c-adj);}
+.noun  .detail-badge{background:var(--c-noun-bg);color:var(--c-noun);}
+.adv   .detail-badge{background:var(--c-adv-bg); color:var(--c-adv);}
+.par   .detail-badge{background:var(--c-par-bg); color:var(--c-par);}
+.aux   .detail-badge{background:var(--c-aux-bg); color:var(--c-aux);}
+
+.conj-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px;}
+.conj-table th{text-align:left;padding:7px 12px;font-weight:700;font-size:11px;border-bottom:1px solid var(--border);}
+.conj-table td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--ink);}
+.conj-table td:first-child{color:var(--soft);font-size:12px;white-space:nowrap;}
+.verb  .conj-table th{background:var(--c-verb-bg);color:var(--c-verb);}
+.adj   .conj-table th{background:var(--c-adj-bg); color:var(--c-adj);}
+.noun  .conj-table th{background:var(--c-noun-bg);color:var(--c-noun);}
+.adv   .conj-table th{background:var(--c-adv-bg); color:var(--c-adv);}
+.par   .conj-table th{background:var(--c-par-bg); color:var(--c-par);}
+.aux   .conj-table th{background:var(--c-aux-bg); color:var(--c-aux);}
+
+.jp{font-size:15px;} .cn{font-size:11px;color:var(--lighter);margin-top:1px;}
+
+.tip{border-radius:var(--radius-xs);padding:11px 14px;font-size:12px;color:var(--soft);border-left:3px solid;margin-top:12px;line-height:1.6;}
+.verb .tip{background:var(--c-verb-bg);border-color:var(--c-verb);}
+.adj  .tip{background:var(--c-adj-bg); border-color:var(--c-adj);}
+.noun .tip{background:var(--c-noun-bg);border-color:var(--c-noun);}
+.adv  .tip{background:var(--c-adv-bg); border-color:var(--c-adv);}
+.par  .tip{background:var(--c-par-bg); border-color:var(--c-par);}
+.aux  .tip{background:var(--c-aux-bg); border-color:var(--pink-dark);}
+.tip strong{font-weight:700;}
+
+.footer{text-align:center;margin-top:48px;font-size:12px;color:var(--lighter);border-top:1px solid var(--border);padding-top:24px;}
+
+  
+
+  /* ── 顶部导航 ── */
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .topnav-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center;
+    padding: 0 20px; height: 52px; gap: 4px;
+  }
+  .topnav-logo { font-size: 14px; font-weight: 900; color: #1a1a1a; text-decoration: none; margin-right: 20px; white-space: nowrap; }
+  .topnav-item { font-size: 13px; font-weight: 500; color: #555; text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all .15s; white-space: nowrap; }
+  .topnav-item:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-item.active { background: #FFF0F7; color: #C4306A; font-weight: 700; }
+  .topnav-dropdown { position: relative; }
+  .topnav-dropdown-btn { font-size: 13px; font-weight: 500; color: #555; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 4px; border: none; background: none; font-family: inherit; }
+  .topnav-dropdown-btn:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-dropdown-btn svg { width: 12px; height: 12px; transition: transform .2s; }
+  .topnav-dropdown.open .topnav-dropdown-btn { background: #FFF0F7; color: #C4306A; }
+  .topnav-dropdown.open .topnav-dropdown-btn svg { transform: rotate(180deg); }
+  .topnav-menu { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.10); min-width: 280px; padding: 8px; z-index: 200; }
+  .topnav-dropdown.open .topnav-menu { display: block; }
+  .topnav-menu a { display: block; padding: 8px 12px; font-size: 12px; color: #555; text-decoration: none; border-radius: 8px; line-height: 1.4; transition: all .12s; }
+  .topnav-menu a:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-menu-label { font-size: 10px; font-weight: 700; color: #999; letter-spacing: .06em; text-transform: uppercase; padding: 6px 12px 4px; }
+
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="topnav-logo" href="index.html">阿萨姆</a>
+    <a class="topnav-item" href="index.html">首页</a>
+    <div class="topnav-dropdown" id="nav-dropdown-word">
+      <button class="topnav-dropdown-btn" onclick="toggleDropdown('nav-dropdown-word')">
+        日语单词知识库
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <div class="topnav-menu">
+        <div class="topnav-menu-label">单词知识库</div>
+        <a href="lib-grammar.html">日语语法体系</a>
+        <a href="lib-traps.html">易错难点库</a>
+        <a href="lib-vocab.html">高频词库</a>
+      </div>
+    </div>
+    <div class="topnav-dropdown" id="nav-dropdown-culture">
+      <button class="topnav-dropdown-btn" onclick="toggleDropdown('nav-dropdown-culture')">
+        日本文化知识库
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <div class="topnav-menu">
+        <div class="topnav-menu-label">九章文化知识库</div>
+        <a href="chapter-01-history.html">第一章 · 日本从哪里来</a>
+        <a href="chapter-02-religion.html">第二章 · 神道教与佛教</a>
+        <a href="chapter-03-language.html">第三章 · 日语是怎么构成的</a>
+        <a href="chapter-04-language-culture.html">第四章 · 藏在日语中的暗语文化</a>
+        <a href="chapter-05-society.html">第五章 · 日本社会文化与地域差异</a>
+        <a href="chapter-06-expressions.html">第六章 · 日本人真正在用的日常表达</a>
+        <a href="chapter-07-class-subcultures.html">第七章 · 阶层与亚文化</a>
+        <a href="chapter-08-popculture-society.html">第八章 · 流行文化与当代社会困境</a>
+        <a href="chapter-09-contrast-myths.html">第九章 · 中日文化对比与误区</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+function toggleDropdown(id){
+  var target = document.getElementById(id);
+  var others = document.querySelectorAll('.topnav-dropdown');
+  others.forEach(function(d){ if(d.id !== id) d.classList.remove('open'); });
+  target.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.topnav-dropdown')){
+    document.querySelectorAll('.topnav-dropdown').forEach(function(d){ d.classList.remove('open'); });
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+    返回首页
+  </a>
+
+  <div class="page-header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#C4306A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 8h10M7 12h6M7 16h8"/></svg>
+    </div>
+    <div>
+      <div class="page-title">日语语法体系</div>
+      <div class="page-desc">从词性分类到变形规则，先建框架再填词——学日语不迷路。点击任意卡片跳转详细讲解。</div>
+    </div>
+  </div>
+
+  <div class="framework-card">
+    <div class="framework-title">日语单词分类框架</div>
+    <div class="framework-hint">点击任意卡片，获取详细讲解 →</div>
+
+    <svg width="100%" viewBox="0 0 760 360" xmlns="http://www.w3.org/2000/svg" style="font-family:'Noto Sans SC','PingFang SC',sans-serif;">
+      <!-- 连接线 -->
+      <line x1="380" y1="52" x2="380" y2="72" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="380" y1="72" x2="200" y2="72" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="200" y1="72" x2="200" y2="90" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="380" y1="72" x2="560" y2="72" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="560" y1="72" x2="560" y2="90" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="200" y1="138" x2="200" y2="158" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="200" y1="158" x2="128" y2="158" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="128" y1="158" x2="128" y2="176" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="200" y1="158" x2="272" y2="158" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="272" y1="158" x2="272" y2="176" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="128" y1="222" x2="128" y2="242" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="128" y1="242" x2="96" y2="242" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="96" y1="242" x2="96" y2="260" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="128" y1="242" x2="160" y2="242" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="160" y1="242" x2="160" y2="260" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="272" y1="222" x2="272" y2="242" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="272" y1="242" x2="240" y2="242" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="240" y1="242" x2="240" y2="260" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="272" y1="242" x2="304" y2="242" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="304" y1="242" x2="304" y2="260" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="560" y1="138" x2="560" y2="158" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="560" y1="158" x2="496" y2="158" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="496" y1="158" x2="496" y2="176" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="560" y1="158" x2="628" y2="158" stroke="#ddd" stroke-width="1.5"/>
+      <line x1="628" y1="158" x2="628" y2="176" stroke="#ddd" stroke-width="1.5"/>
+
+      <!-- 根 -->
+      <rect x="280" y="10" width="200" height="42" rx="12" fill="#F3E5F5" stroke="#CE93D8" stroke-width="1.2"/>
+      <text x="380" y="36" text-anchor="middle" font-size="15" font-weight="700" fill="#6A1B9A">日语单词</text>
+
+      <!-- 自立词 -->
+      <a href="#sec-verb"><g class="node-clickable">
+        <rect x="90" y="90" width="220" height="48" rx="12" fill="#E8F5E9" stroke="#A5D6A7" stroke-width="1.2"/>
+        <text x="200" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#2E7D32">自立词</text>
+        <text x="200" y="128" text-anchor="middle" font-size="11" fill="#4CAF50">能单独表达意思</text>
+      </g></a>
+
+      <!-- 附属词 -->
+      <a href="#sec-par"><g class="node-clickable">
+        <rect x="448" y="90" width="224" height="48" rx="12" fill="#FCE4EC" stroke="#F48FB1" stroke-width="1.2"/>
+        <text x="560" y="110" text-anchor="middle" font-size="13" font-weight="700" fill="#C62828">附属词</text>
+        <text x="560" y="128" text-anchor="middle" font-size="11" fill="#E53935">需依附其他词使用</text>
+      </g></a>
+
+      <!-- 活用词 -->
+      <rect x="64" y="176" width="128" height="46" rx="10" fill="#E8F5E9" stroke="#A5D6A7" stroke-width="1.2"/>
+      <text x="128" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="#2E7D32">活用词</text>
+      <text x="128" y="212" text-anchor="middle" font-size="11" fill="#4CAF50">会变形</text>
+
+      <!-- 非活用词 -->
+      <rect x="208" y="176" width="128" height="46" rx="10" fill="#E8F5E9" stroke="#A5D6A7" stroke-width="1.2"/>
+      <text x="272" y="196" text-anchor="middle" font-size="12" font-weight="700" fill="#2E7D32">非活用词</text>
+      <text x="272" y="212" text-anchor="middle" font-size="11" fill="#4CAF50">不变形</text>
+
+      <!-- 动词 -->
+      <a href="#sec-verb"><g class="node-clickable">
+        <rect x="46" y="260" width="100" height="56" rx="10" fill="#E8F5E9" stroke="#A5D6A7" stroke-width="1.2"/>
+        <text x="96" y="283" text-anchor="middle" font-size="12" font-weight="700" fill="#2E7D32">动词</text>
+        <text x="96" y="299" text-anchor="middle" font-size="11" fill="#4CAF50">食べる</text>
+      </g></a>
+
+      <!-- 形容词 -->
+      <a href="#sec-adj"><g class="node-clickable">
+        <rect x="110" y="260" width="100" height="56" rx="10" fill="#E8F4FD" stroke="#90CAF9" stroke-width="1.2"/>
+        <text x="160" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="#1565C0">形容词</text>
+        <text x="160" y="296" text-anchor="middle" font-size="11" fill="#1976D2">い/な</text>
+        <text x="160" y="310" text-anchor="middle" font-size="11" fill="#1976D2">形容词</text>
+      </g></a>
+
+      <!-- 名词 -->
+      <a href="#sec-noun"><g class="node-clickable">
+        <rect x="188" y="260" width="104" height="56" rx="10" fill="#FFF8E1" stroke="#FFE082" stroke-width="1.2"/>
+        <text x="240" y="283" text-anchor="middle" font-size="12" font-weight="700" fill="#E65100">名词</text>
+        <text x="240" y="299" text-anchor="middle" font-size="11" fill="#EF6C00">日本語</text>
+      </g></a>
+
+      <!-- 副词等 -->
+      <a href="#sec-adv"><g class="node-clickable">
+        <rect x="256" y="260" width="100" height="56" rx="10" fill="#F3E5F5" stroke="#CE93D8" stroke-width="1.2"/>
+        <text x="306" y="280" text-anchor="middle" font-size="12" font-weight="700" fill="#6A1B9A">副词等</text>
+        <text x="306" y="296" text-anchor="middle" font-size="11" fill="#7B1FA2">副词/连体词</text>
+        <text x="306" y="310" text-anchor="middle" font-size="11" fill="#7B1FA2">感叹词</text>
+      </g></a>
+
+      <!-- 助词 -->
+      <a href="#sec-par"><g class="node-clickable">
+        <rect x="424" y="176" width="144" height="56" rx="10" fill="#FCE4EC" stroke="#F48FB1" stroke-width="1.2"/>
+        <text x="496" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#C62828">助词</text>
+        <text x="496" y="214" text-anchor="middle" font-size="11" fill="#E53935">は・が・を・に</text>
+        <text x="496" y="228" text-anchor="middle" font-size="11" fill="#E53935">の・と・も</text>
+      </g></a>
+
+      <!-- 助动词 -->
+      <a href="#sec-aux"><g class="node-clickable">
+        <rect x="556" y="176" width="144" height="56" rx="10" fill="#FFF0F7" stroke="#F9A8C9" stroke-width="1.2"/>
+        <text x="628" y="198" text-anchor="middle" font-size="12" font-weight="700" fill="#C4306A">助动词</text>
+        <text x="628" y="214" text-anchor="middle" font-size="11" fill="#E8709A">です・ます・た</text>
+        <text x="628" y="228" text-anchor="middle" font-size="11" fill="#E8709A">ない・だろう</text>
+      </g></a>
+    </svg>
+
+    <!-- 速查卡 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:4px;">
+      <a class="cat-card verb" href="#sec-verb">
+        <div class="cat-title">动词（動詞）</div>
+        <div class="cat-body">一类：書く・読む・話す<br>二类：食べる・見る<br>三类：する・来る</div>
+        <span class="cat-arrow">→ 会变形，接续其他语法</span>
+      </a>
+      <a class="cat-card adj" href="#sec-adj">
+        <div class="cat-title">形容词（形容詞）</div>
+        <div class="cat-body">い形：おいしい・たかい<br>な形：きれいな・すきな<br>い形会变形，な形接な</div>
+        <span class="cat-arrow">→ 修饰名词/描述状态</span>
+      </a>
+      <a class="cat-card noun" href="#sec-noun">
+        <div class="cat-title">名词（名詞）</div>
+        <div class="cat-body">普通：猫・本・学校<br>代名词：私・あれ・ここ<br>数词：一つ・三枚</div>
+        <span class="cat-arrow">→ 不变形，作主语/宾语</span>
+      </a>
+      <a class="cat-card par" href="#sec-par">
+        <div class="cat-title">助词（助詞）</div>
+        <div class="cat-body">は/が：主题/主语<br>を：宾语　に/で：地点<br>の：从属　と：和/引用</div>
+        <span class="cat-arrow">→ 标记语法关系，很重要！</span>
+      </a>
+      <a class="cat-card aux" href="#sec-aux">
+        <div class="cat-title">助动词（助動詞）</div>
+        <div class="cat-body">です/ます：礼貌体<br>た：过去式　ない：否定<br>れる/られる：被动</div>
+        <span class="cat-arrow">→ 附在动词后改变意思</span>
+      </a>
+      <a class="cat-card adv" href="#sec-adv">
+        <div class="cat-title">副词/感叹词</div>
+        <div class="cat-body">副词：もっと・ゆっくり<br>连体词：この・その・ある<br>感叹词：あ・えっ・はい</div>
+        <span class="cat-arrow">→ 修饰或表达语气</span>
+      </a>
+    </div>
+
+    <div class="hint-row">点击任意卡片，跳转详细讲解 ↓</div>
+    <div class="jlpt-bar">
+      <div class="jlpt-title">JLPT考试重点</div>
+      <div class="jlpt-desc">N5–N4 以动词/形容词变形 + 基础助词为主</div>
+    </div>
+  </div>
+
+  <div class="section-label">详细讲解</div>
+
+  <div id="sec-verb" class="detail-section verb">
+    <div class="detail-title"><span class="detail-badge">自立词 · 活用</span>动词（動詞）</div>
+    <table class="conj-table">
+      <tr><th>形式</th><th>例：食べる（二类）</th><th>例：書く（一类）</th></tr>
+      <tr><td>ます形</td><td class="jp">食べます</td><td class="jp">書きます</td></tr>
+      <tr><td>て形</td><td class="jp">食べて</td><td class="jp">書いて</td></tr>
+      <tr><td>た形</td><td class="jp">食べた</td><td class="jp">書いた</td></tr>
+      <tr><td>ない形</td><td class="jp">食べない</td><td class="jp">書かない</td></tr>
+      <tr><td>ば形</td><td class="jp">食べれば</td><td class="jp">書けば</td></tr>
+      <tr><td>意志形</td><td class="jp">食べよう</td><td class="jp">書こう</td></tr>
+    </table>
+    <div class="tip"><strong>三类速记：</strong>一类（五段）词尾五行变化；二类（一段）去る加词尾；三类只有する→します・来る→きます，直接背。</div>
+  </div>
+
+  <div id="sec-adj" class="detail-section adj" style="margin-top:12px;">
+    <div class="detail-title"><span class="detail-badge">自立词 · 活用</span>形容词（形容詞）</div>
+    <table class="conj-table">
+      <tr><th>形式</th><th>い形：おいしい</th><th>な形：きれい</th></tr>
+      <tr><td>礼貌现在</td><td class="jp">おいしいです</td><td class="jp">きれいです</td></tr>
+      <tr><td>否定</td><td class="jp">おいしくない</td><td class="jp">きれいじゃない</td></tr>
+      <tr><td>过去</td><td class="jp">おいしかった</td><td class="jp">きれいだった</td></tr>
+      <tr><td>接名词</td><td class="jp">おいしい料理</td><td class="jp">きれいな人</td></tr>
+      <tr><td>て形</td><td class="jp">おいしくて</td><td class="jp">きれいで</td></tr>
+    </table>
+    <div class="tip"><strong>关键区别：</strong>い形自己变形；な形接名词时必须加な（きれいな人），否定用じゃない。</div>
+  </div>
+
+  <div id="sec-noun" class="detail-section noun" style="margin-top:12px;">
+    <div class="detail-title"><span class="detail-badge">自立词 · 非活用</span>名词（名詞）</div>
+    <table class="conj-table">
+      <tr><th>类型</th><th>例子</th><th>说明</th></tr>
+      <tr><td>普通名词</td><td class="jp">猫・本・学校</td><td>最常见</td></tr>
+      <tr><td>代名词</td><td class="jp">私・あれ・ここ</td><td>指人/物/地点</td></tr>
+      <tr><td>数词</td><td class="jp">一つ・三枚・五冊</td><td>数量+量词</td></tr>
+      <tr><td>形式名词</td><td class="jp">こと・もの・の・わけ</td><td>无实义，语法作用</td></tr>
+    </table>
+    <div class="tip"><strong>名词不变形，</strong>靠助词标记语法角色：本<strong>が</strong>（主语）・本<strong>を</strong>（宾语）・本<strong>の</strong>（从属）。</div>
+  </div>
+
+  <div id="sec-par" class="detail-section par" style="margin-top:12px;">
+    <div class="detail-title"><span class="detail-badge">附属词</span>助词（助詞）</div>
+    <table class="conj-table">
+      <tr><th>助词</th><th>主要用法</th><th>例句</th></tr>
+      <tr><td class="jp">は</td><td>主题标记</td><td><div class="jp">私<b>は</b>学生です</div><div class="cn">我（话题）是学生</div></td></tr>
+      <tr><td class="jp">が</td><td>主语/强调</td><td><div class="jp">猫<b>が</b>好きです</div><div class="cn">我喜欢的是猫</div></td></tr>
+      <tr><td class="jp">を</td><td>宾语</td><td><div class="jp">ご飯<b>を</b>食べる</div><div class="cn">吃饭</div></td></tr>
+      <tr><td class="jp">に</td><td>时间/地点/方向</td><td><div class="jp">東京<b>に</b>行く</div><div class="cn">去东京</div></td></tr>
+      <tr><td class="jp">で</td><td>场所/手段</td><td><div class="jp">電車<b>で</b>行く</div><div class="cn">坐电车去</div></td></tr>
+      <tr><td class="jp">の</td><td>从属/所有</td><td><div class="jp">私<b>の</b>本</div><div class="cn">我的书</div></td></tr>
+      <tr><td class="jp">と</td><td>和/引用</td><td><div class="jp">友達<b>と</b>行く</div><div class="cn">和朋友去</div></td></tr>
+      <tr><td class="jp">も</td><td>也</td><td><div class="jp">私<b>も</b>行く</div><div class="cn">我也去</div></td></tr>
+    </table>
+    <div class="tip"><strong>は vs が 最难：</strong>は强调话题，が强调主语本身。「私は学生です」= 我嘛是学生；「私が学生です」= 是我不是别人。</div>
+  </div>
+
+  <div id="sec-aux" class="detail-section aux" style="margin-top:12px;">
+    <div class="detail-title"><span class="detail-badge">附属词</span>助动词（助動詞）</div>
+    <table class="conj-table">
+      <tr><th>助动词</th><th>意思</th><th>例子</th></tr>
+      <tr><td class="jp">です</td><td>是……（礼貌）</td><td><div class="jp">学生です</div></td></tr>
+      <tr><td class="jp">ます</td><td>礼貌体动词</td><td><div class="jp">食べます</div></td></tr>
+      <tr><td class="jp">た</td><td>过去/完成</td><td><div class="jp">食べた</div></td></tr>
+      <tr><td class="jp">ない</td><td>否定</td><td><div class="jp">食べない</div></td></tr>
+      <tr><td class="jp">たい</td><td>想做……</td><td><div class="jp">行きたい</div></td></tr>
+      <tr><td class="jp">だろう/でしょう</td><td>大概……吧</td><td><div class="jp">来るでしょう</div></td></tr>
+      <tr><td class="jp">れる/られる</td><td>被动/可能</td><td><div class="jp">褒められた</div></td></tr>
+      <tr><td class="jp">させる</td><td>使役</td><td><div class="jp">食べさせる</div></td></tr>
+    </table>
+  </div>
+
+  <div id="sec-adv" class="detail-section adv" style="margin-top:12px;">
+    <div class="detail-title"><span class="detail-badge">自立词 · 非活用</span>副词/连体词/感叹词</div>
+    <table class="conj-table">
+      <tr><th>类型</th><th>例子</th><th>用法</th></tr>
+      <tr><td>程度副词</td><td class="jp">とても・少し・もっと</td><td>修饰形容词/动词</td></tr>
+      <tr><td>频率副词</td><td class="jp">いつも・たまに・よく</td><td>表示频率</td></tr>
+      <tr><td>样态副词</td><td class="jp">ゆっくり・はっきり</td><td>描述动作方式</td></tr>
+      <tr><td>连体词</td><td class="jp">この・その・ある</td><td>只能修饰名词</td></tr>
+      <tr><td>感叹词</td><td class="jp">あ・えっ・はい・いいえ</td><td>感情/应答</td></tr>
+    </table>
+    <div class="tip"><strong>なかなか：</strong>接肯定=相当（なかなかうまい）；接否定=怎么也不（なかなか来ない）。</div>
+  </div>
+
+  <div class="footer">阿萨姆的日语知识库 · 语法体系</div>
+
+</body>
+</html>

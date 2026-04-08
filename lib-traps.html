@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学习难点维度 · 阿萨姆</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f7;--white:#fff;--ink:#1a1a1a;--soft:#555;--lighter:#999;--border:#e8e8e8;
+  --shadow:0 2px 12px rgba(0,0,0,.08);--shadow-lg:0 4px 24px rgba(0,0,0,.11);
+  --radius:20px;--radius-sm:14px;--radius-xs:10px;
+  --pink:#F9A8C9;--pink-dark:#E8709A;--pink-bg:#FFF0F7;--pink-deep:#C4306A;
+  
+  --t1c:#B71C1C;--t1bg:#FFEBEE;
+  --t2c:#1565C0;--t2bg:#E3F2FD;
+  --t3c:#1B5E20;--t3bg:#E8F5E9;
+  --t4c:#E65100;--t4bg:#FFF3E0;
+  --t5c:#4A148C;--t5bg:#F3E5F5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--ink);font-family:'Noto Sans SC','PingFang SC',sans-serif;font-size:15px;line-height:1.8;-webkit-font-smoothing:antialiased;}
+
+
+
+
+
+
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 22px;font-size:13px;font-weight:500;color:var(--soft);text-decoration:none;border-left:3px solid transparent;transition:all .15s;border-radius:0 10px 10px 0;margin-right:12px;}
+.nav-item:hover{background:var(--pink-bg);color:var(--pink-deep);border-left-color:var(--pink);}
+.nav-item.active{background:var(--pink-bg);color:var(--pink-deep);border-left-color:var(--pink-dark);font-weight:700;}
+.nav-icon{width:16px;height:16px;flex-shrink:0;}
+
+.main{flex:1;min-width:0;padding:40px 36px 80px;}
+.back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--lighter);text-decoration:none;margin-bottom:24px;transition:color .15s;}
+.back-link:hover{color:var(--pink-deep);}
+
+.page-header{background:var(--white);border-radius:var(--radius);padding:28px 30px;margin-bottom:24px;box-shadow:var(--shadow);display:flex;align-items:flex-start;gap:18px;}
+.header-icon{width:54px;height:54px;border-radius:16px;background:var(--pink-bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.page-title{font-size:22px;font-weight:900;}
+.page-desc{font-size:13px;color:var(--soft);margin-top:6px;line-height:1.6;}
+
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.filter-btn{padding:7px 16px;border-radius:20px;border:2px solid var(--border);background:var(--white);color:var(--soft);font-size:13px;cursor:pointer;font-family:inherit;font-weight:500;transition:all .15s;box-shadow:var(--shadow);}
+.filter-btn:hover{border-color:var(--pink);color:var(--pink-deep);}
+.filter-btn.active{background:var(--pink-bg);color:var(--pink-deep);border-color:var(--pink-dark);font-weight:700;}
+
+.section-label{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--lighter);text-transform:uppercase;margin:24px 0 14px;display:flex;align-items:center;gap:10px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+
+.trap-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:560px){.trap-grid{grid-template-columns:1fr;}}
+
+.trap-card{background:var(--white);border-radius:var(--radius-sm);padding:20px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;}
+.trap-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.trap-card.hidden{display:none;}
+
+.tc-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;display:inline-block;margin-bottom:10px;}
+.tag-t1{background:var(--t1bg);color:var(--t1c);}
+.tag-t2{background:var(--t2bg);color:var(--t2c);}
+.tag-t3{background:var(--t3bg);color:var(--t3c);}
+.tag-t4{background:var(--t4bg);color:var(--t4c);}
+.tag-t5{background:var(--t5bg);color:var(--t5c);}
+
+.tc-word{font-size:22px;font-weight:900;color:var(--ink);}
+.tc-kana{font-size:12px;color:var(--lighter);margin-top:2px;}
+.tc-sep{border:none;border-top:1px solid var(--border);margin:12px 0;}
+
+.vs-row{display:flex;gap:10px;margin-top:8px;}
+.vs-box{flex:1;border-radius:var(--radius-xs);padding:10px 12px;}
+.vs-wrong{background:#FFF5F5;}
+.vs-right{background:#F0FFF4;}
+.vs-label{font-size:10px;font-weight:700;margin-bottom:3px;}
+.vs-wrong .vs-label{color:#C62828;}
+.vs-right .vs-label{color:#2E7D32;}
+.vs-text{font-size:13px;color:var(--ink);}
+
+.reading-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.reading-chip{background:var(--t1bg);border-radius:var(--radius-xs);padding:9px 12px;flex:1;min-width:90px;}
+.rc-kana{font-size:14px;font-weight:700;color:var(--t1c);}
+.rc-cn{font-size:11px;color:var(--soft);margin-top:2px;}
+.rc-ex{font-size:11px;color:var(--lighter);margin-top:3px;}
+
+.confuse-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px;}
+.confuse-item{background:var(--t3bg);border-radius:var(--radius-xs);padding:10px 12px;}
+.ci-jp{font-size:15px;font-weight:700;color:var(--t3c);}
+.ci-kana{font-size:11px;color:var(--lighter);}
+.ci-cn{font-size:12px;color:var(--soft);margin-top:4px;}
+
+.memo-box{background:var(--t4bg);border-radius:var(--radius-xs);padding:12px 14px;margin-top:10px;font-size:13px;color:var(--soft);line-height:1.6;}
+.memo-box strong{color:var(--t4c);font-weight:700;}
+
+.tip{border-radius:var(--radius-xs);padding:10px 14px;font-size:12px;color:var(--soft);border-left:3px solid var(--pink);background:var(--pink-bg);margin-top:10px;line-height:1.6;}
+.tip strong{color:var(--pink-deep);}
+
+.idea-box{background:#FFFBEB;border-radius:var(--radius-xs);border:1.5px solid #FDE68A;padding:12px 14px;margin-top:12px;}
+.idea-label{font-size:10px;font-weight:700;color:#92400E;letter-spacing:.04em;margin-bottom:5px;}
+.idea-title span{display:block;font-size:12px;color:#1a1a1a;padding-left:10px;border-left:2px solid #FCD34D;margin-top:4px;line-height:1.6;}
+
+.footer{text-align:center;margin-top:48px;font-size:12px;color:var(--lighter);border-top:1px solid var(--border);padding-top:24px;}
+
+  
+
+  /* ── 顶部导航 ── */
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    font-family: 'Noto Sans SC', sans-serif;
+  }
+  .topnav-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center;
+    padding: 0 20px; height: 52px; gap: 4px;
+  }
+  .topnav-logo { font-size: 14px; font-weight: 900; color: #1a1a1a; text-decoration: none; margin-right: 20px; white-space: nowrap; }
+  .topnav-item { font-size: 13px; font-weight: 500; color: #555; text-decoration: none; padding: 6px 12px; border-radius: 8px; transition: all .15s; white-space: nowrap; }
+  .topnav-item:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-item.active { background: #FFF0F7; color: #C4306A; font-weight: 700; }
+  .topnav-dropdown { position: relative; }
+  .topnav-dropdown-btn { font-size: 13px; font-weight: 500; color: #555; padding: 6px 12px; border-radius: 8px; cursor: pointer; transition: all .15s; display: flex; align-items: center; gap: 4px; border: none; background: none; font-family: inherit; }
+  .topnav-dropdown-btn:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-dropdown-btn svg { width: 12px; height: 12px; transition: transform .2s; }
+  .topnav-dropdown.open .topnav-dropdown-btn { background: #FFF0F7; color: #C4306A; }
+  .topnav-dropdown.open .topnav-dropdown-btn svg { transform: rotate(180deg); }
+  .topnav-menu { display: none; position: absolute; top: calc(100% + 6px); left: 0; background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,.10); min-width: 280px; padding: 8px; z-index: 200; }
+  .topnav-dropdown.open .topnav-menu { display: block; }
+  .topnav-menu a { display: block; padding: 8px 12px; font-size: 12px; color: #555; text-decoration: none; border-radius: 8px; line-height: 1.4; transition: all .12s; }
+  .topnav-menu a:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-menu-label { font-size: 10px; font-weight: 700; color: #999; letter-spacing: .06em; text-transform: uppercase; padding: 6px 12px 4px; }
+
+</style>
+</head>
+<body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="topnav-logo" href="index.html">阿萨姆</a>
+    <a class="topnav-item" href="index.html">首页</a>
+    <div class="topnav-dropdown" id="nav-dropdown-word">
+      <button class="topnav-dropdown-btn" onclick="toggleDropdown('nav-dropdown-word')">
+        日语单词知识库
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <div class="topnav-menu">
+        <div class="topnav-menu-label">单词知识库</div>
+        <a href="lib-grammar.html">日语语法体系</a>
+        <a href="lib-traps.html">易错难点库</a>
+        <a href="lib-vocab.html">高频词库</a>
+      </div>
+    </div>
+    <div class="topnav-dropdown" id="nav-dropdown-culture">
+      <button class="topnav-dropdown-btn" onclick="toggleDropdown('nav-dropdown-culture')">
+        日本文化知识库
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <div class="topnav-menu">
+        <div class="topnav-menu-label">九章文化知识库</div>
+        <a href="chapter-01-history.html">第一章 · 日本从哪里来</a>
+        <a href="chapter-02-religion.html">第二章 · 神道教与佛教</a>
+        <a href="chapter-03-language.html">第三章 · 日语是怎么构成的</a>
+        <a href="chapter-04-language-culture.html">第四章 · 藏在日语中的暗语文化</a>
+        <a href="chapter-05-society.html">第五章 · 日本社会文化与地域差异</a>
+        <a href="chapter-06-expressions.html">第六章 · 日本人真正在用的日常表达</a>
+        <a href="chapter-07-class-subcultures.html">第七章 · 阶层与亚文化</a>
+        <a href="chapter-08-popculture-society.html">第八章 · 流行文化与当代社会困境</a>
+        <a href="chapter-09-contrast-myths.html">第九章 · 中日文化对比与误区</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+function toggleDropdown(id){
+  var target = document.getElementById(id);
+  var others = document.querySelectorAll('.topnav-dropdown');
+  others.forEach(function(d){ if(d.id !== id) d.classList.remove('open'); });
+  target.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.topnav-dropdown')){
+    document.querySelectorAll('.topnav-dropdown').forEach(function(d){ d.classList.remove('open'); });
+  }
+});
+</script>
+
+
+
+
+
+
+
+
+  <a class="back-link" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 2L4 7l5 5"/></svg>
+    返回首页
+  </a>
+
+  <div class="page-header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#C4306A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <div>
+      <div class="page-title">学习难点维度</div>
+      <div class="page-desc">中国学习者最容易踩的坑，每条都有对比讲解和小红书标题思路。</div>
+    </div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterTrap('all',this)">全部</button>
+    <button class="filter-btn" onclick="filterTrap('t1',this)">多音字</button>
+    <button class="filter-btn" onclick="filterTrap('t2',this)">望文生义</button>
+    <button class="filter-btn" onclick="filterTrap('t3',this)">易混淆</button>
+    <button class="filter-btn" onclick="filterTrap('t4',this)">助记法</button>
+    <button class="filter-btn" onclick="filterTrap('t5',this)">同字不同义</button>
+  </div>
+
+  <div class="section-label">多音字</div>
+  <div class="trap-grid">
+    <div class="trap-card" data-type="t1"><span class="tc-tag tag-t1">多音字</span><div class="tc-word">人</div><hr class="tc-sep"><div class="reading-row"><div class="reading-chip"><div class="rc-kana">ひと</div><div class="rc-cn">人（训读）</div><div class="rc-ex">あの人</div></div><div class="reading-chip"><div class="rc-kana">じん・にん</div><div class="rc-cn">人（音读）</div><div class="rc-ex">日本人 / 三人</div></div></div><div class="tip"><strong>规律：</strong>单独指人→ひと；作后缀→じん/にん。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>同一个「人」，日语里读法竟然不一样？</span><span>学日语第一天踩的坑：「人」到底怎么读</span></div></div></div>
+
+    <div class="trap-card" data-type="t1"><span class="tc-tag tag-t1">多音字</span><div class="tc-word">今日</div><hr class="tc-sep"><div class="reading-row"><div class="reading-chip"><div class="rc-kana">きょう</div><div class="rc-cn">今天（口语）</div><div class="rc-ex">今日は暑い</div></div><div class="reading-chip"><div class="rc-kana">こんにち</div><div class="rc-cn">当今（固定）</div><div class="rc-ex">こんにちは</div></div></div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>「今日」不读 jīnrì？日语里有两种读法</span><span>你每天说的こんにちは里藏着"今日"这个词</span></div></div></div>
+
+    <div class="trap-card" data-type="t1"><span class="tc-tag tag-t1">多音字</span><div class="tc-word">上</div><hr class="tc-sep"><div class="reading-row"><div class="reading-chip"><div class="rc-kana">うえ</div><div class="rc-cn">上面（位置）</div><div class="rc-ex">机の上</div></div><div class="reading-chip"><div class="rc-kana">じょう・しょう</div><div class="rc-cn">上（音读）</div><div class="rc-ex">上手 / 上映</div></div></div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语里「上手」不读 shàngshǒu，读错会闹笑话</span><span>同一个「上」字，日语里有几种读法？</span></div></div></div>
+
+    <div class="trap-card" data-type="t1"><span class="tc-tag tag-t1">多音字</span><div class="tc-word">生</div><hr class="tc-sep"><div class="reading-row"><div class="reading-chip"><div class="rc-kana">いきる/うまれる</div><div class="rc-cn">活着/出生</div></div><div class="reading-chip"><div class="rc-kana">せい・なま</div><div class="rc-cn">学生 / 生啤</div></div></div><div class="tip"><strong>「生」读法超6种，</strong>先记：いきる・うまれる・なま・せい。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语里读法最多的汉字？「生」竟然有6种读法</span><span>点生啤用的「なま」和「学生」的せい是同一个字？</span></div></div></div>
+  </div>
+
+  <div class="section-label">望文生义</div>
+  <div class="trap-grid">
+    <div class="trap-card" data-type="t2"><span class="tc-tag tag-t2">望文生义</span><div class="tc-word">勉強</div><div class="tc-kana">べんきょう</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">中文直觉（错）</div><div class="vs-text">勉强、不情愿</div></div><div class="vs-box vs-right"><div class="vs-label">日语实际意思</div><div class="vs-text">学习</div></div></div><div class="tip"><strong>「勉強する」= 学习，</strong>和"不情愿"无关。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>在日本说「勉强」是学习？中日差距太大了</span><span>中国人学日语最容易望文生义的词，第一个就把我整笑了</span></div></div></div>
+
+    <div class="trap-card" data-type="t2"><span class="tc-tag tag-t2">望文生义</span><div class="tc-word">大丈夫</div><div class="tc-kana">だいじょうぶ</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">中文直觉（错）</div><div class="vs-text">大丈夫（男子汉）</div></div><div class="vs-box vs-right"><div class="vs-label">日语实际意思</div><div class="vs-text">没关系、没问题</div></div></div><div class="tip"><strong>「大丈夫ですか？」</strong>= "你还好吗"，不是叫你男子汉。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语「大丈夫」不是大丈夫！中国人100%会误会</span><span>日本人问你「大丈夫？」别闹笑话</span></div></div></div>
+
+    <div class="trap-card" data-type="t2"><span class="tc-tag tag-t2">望文生义</span><div class="tc-word">娘</div><div class="tc-kana">むすめ</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">中文直觉（错）</div><div class="vs-text">娘、妈妈</div></div><div class="vs-box vs-right"><div class="vs-label">日语实际意思</div><div class="vs-text">女儿（自己的）</div></div></div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语「娘」不是娘？中日汉字陷阱又来了</span><span>日本人说「私の娘」是什么意思？不是你想的那个</span></div></div></div>
+
+    <div class="trap-card" data-type="t2"><span class="tc-tag tag-t2">望文生义</span><div class="tc-word">以外 vs 意外</div><div class="tc-kana">いがい</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">容易混的词</div><div class="vs-text">意外 = 意想不到</div></div><div class="vs-box vs-right"><div class="vs-label">以外的意思</div><div class="vs-text">除了……（排除）</div></div></div><div class="tip">发音完全一样，只靠汉字区分！</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>发音一样、意思完全不同：「以外」和「意外」傻傻分不清</span><span>日语里最容易写错的同音词，你中过几个？</span></div></div></div>
+  </div>
+
+  <div class="section-label">易混淆词</div>
+  <div class="trap-grid">
+    <div class="trap-card" data-type="t3"><span class="tc-tag tag-t3">易混淆</span><div class="tc-word" style="font-size:17px">行く vs 来る</div><hr class="tc-sep"><div class="confuse-row"><div class="confuse-item"><div class="ci-jp">行く</div><div class="ci-kana">いく</div><div class="ci-cn">去（离开说话人）</div></div><div class="confuse-item"><div class="ci-jp">来る</div><div class="ci-kana">くる</div><div class="ci-cn">来（朝说话人靠近）</div></div></div><div class="tip"><strong>以说话人为中心：</strong>离开→行く，靠近→来る。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语「去」和「来」用反了？行く和来る一次说清</span><span>中国人学日语最常用错的动词：行く还是来る？</span></div></div></div>
+
+    <div class="trap-card" data-type="t3"><span class="tc-tag tag-t3">易混淆</span><div class="tc-word" style="font-size:16px">着る vs 履く vs 被る</div><hr class="tc-sep"><div class="confuse-row" style="grid-template-columns:1fr 1fr 1fr"><div class="confuse-item"><div class="ci-jp">着る</div><div class="ci-kana">きる</div><div class="ci-cn">穿（上衣）</div></div><div class="confuse-item"><div class="ci-jp">履く</div><div class="ci-kana">はく</div><div class="ci-cn">穿（裤/鞋）</div></div><div class="confuse-item"><div class="ci-jp">被る</div><div class="ci-kana">かぶる</div><div class="ci-cn">戴（帽子）</div></div></div><div class="tip">日语"穿"按部位分动词，不能通用。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语里"穿衣服"和"穿鞋"是完全不同的词！</span><span>穿上衣、穿裤子、戴帽子——日语全不一样</span></div></div></div>
+
+    <div class="trap-card" data-type="t3"><span class="tc-tag tag-t3">易混淆</span><div class="tc-word" style="font-size:15px">見る vs 見える vs 見せる</div><hr class="tc-sep"><div class="confuse-row"><div class="confuse-item"><div class="ci-jp">見る</div><div class="ci-cn">主动看（有意识）</div></div><div class="confuse-item"><div class="ci-jp">見える</div><div class="ci-cn">看得见（自然）</div></div></div><div class="confuse-row" style="margin-top:8px;grid-template-columns:1fr"><div class="confuse-item"><div class="ci-jp">見せる</div><div class="ci-cn">给别人看（他动词）</div></div></div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语里"看"有三种说法？見る・見える・見せる傻傻分不清</span><span>"我看见了"和"我在看"，日语表达完全不同</span></div></div></div>
+
+    <div class="trap-card" data-type="t3"><span class="tc-tag tag-t3">易混淆</span><div class="tc-word" style="font-size:16px">でも vs けど vs が</div><hr class="tc-sep"><div class="confuse-row"><div class="confuse-item"><div class="ci-jp">でも</div><div class="ci-cn">但是（句首，语气重）</div></div><div class="confuse-item"><div class="ci-jp">けど・けれど</div><div class="ci-cn">但是（句中，口语）</div></div></div><div class="tip">「でも行きたい」= 但还是想去；「行きたいけど、忙しい」= 想去但很忙。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语里"但是"有好几种说法，用错了很奇怪</span><span>でも、けど、が——都是"但是"，日本人却能听出区别</span></div></div></div>
+  </div>
+
+  <div class="section-label">助记法</div>
+  <div class="trap-grid">
+    <div class="trap-card" data-type="t4"><span class="tc-tag tag-t4">助记</span><div class="tc-word">曖昧</div><div class="tc-kana">あいまい · 模糊/暧昧</div><div class="memo-box"><strong>联想：</strong>"哎，迷——哎（あい）迷（まい）"，搞不清楚，正好对应"模糊"。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>用这个方法记住「曖昧」，忘不掉的那种</span><span>日语新手记单词技巧：あいまい为什么叫"暧昧"</span></div></div></div>
+
+    <div class="trap-card" data-type="t4"><span class="tc-tag tag-t4">助记</span><div class="tc-word">悔しい</div><div class="tc-kana">くやしい · 不甘心</div><div class="memo-box"><strong>联想：</strong>输了比赛，"哭（く）啊，失（や）去了……"那种气愤又难过，就是「悔しい」。重点是"不甘心"不只是"后悔"。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>「悔しい」不是后悔，是更复杂的情绪——日语新手必学</span><span>用一个故事记住悔しい，再也混不了</span></div></div></div>
+
+    <div class="trap-card" data-type="t4"><span class="tc-tag tag-t4">助记</span><div class="tc-word">せっかく</div><div class="tc-kana">好不容易/特地</div><div class="memo-box"><strong>语感记忆：</strong>「せっかく来たのに」（好不容易来了，却……）。这个词自带可惜或感激的情绪，背例句比背翻译有效。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>「せっかく」怎么翻译都不太对，但学会了日语更地道</span><span>日语里这个词没有完美的中文翻译，但你一定要懂它</span></div></div></div>
+
+    <div class="trap-card" data-type="t4"><span class="tc-tag tag-t4">助记</span><div class="tc-word">なかなか</div><div class="tc-kana">相当/怎么也不</div><div class="memo-box"><strong>双面词：</strong>接肯定=相当（なかなかうまい）；接否定=怎么也不（なかなか来ない）。跟着后面的词变态度。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>同一个词「なかなか」，意思完全相反？日语真的很奇妙</span><span>日语这个词跟着后面的词变脸，新手100%搞混</span></div></div></div>
+  </div>
+
+  <div class="section-label">同字不同义</div>
+  <div class="trap-grid">
+    <div class="trap-card" data-type="t5"><span class="tc-tag tag-t5">同字不同义</span><div class="tc-word">手紙</div><div class="tc-kana">てがみ</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">中文意思</div><div class="vs-text">卫生纸/手纸</div></div><div class="vs-box vs-right"><div class="vs-label">日语意思</div><div class="vs-text">信、信件</div></div></div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>在日本说「手紙」是写信？中文的手纸在日语是这个词</span><span>中日汉字陷阱：「手紙」让中国人当场社死</span></div></div></div>
+
+    <div class="trap-card" data-type="t5"><span class="tc-tag tag-t5">同字不同义</span><div class="tc-word">愛人</div><div class="tc-kana">あいじん</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">中文意思</div><div class="vs-text">爱人（配偶，正式）</div></div><div class="vs-box vs-right"><div class="vs-label">日语意思</div><div class="vs-text">情人、婚外情对象</div></div></div><div class="tip"><strong>高危词！</strong>介绍配偶别用「愛人」，日语配偶是「妻/夫」。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>把老公介绍成「愛人」？中国人在日本最容易造成的误会</span><span>高危词预警：这些中文词在日语里意思完全变了</span></div></div></div>
+
+    <div class="trap-card" data-type="t5"><span class="tc-tag tag-t5">同字不同义</span><div class="tc-word">汽車</div><div class="tc-kana">きしゃ</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">中文意思</div><div class="vs-text">汽车（automobile）</div></div><div class="vs-box vs-right"><div class="vs-label">日语意思</div><div class="vs-text">火车、蒸汽机车</div></div></div><div class="tip">日语汽车是「車（くるま）」或「自動車」。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语「汽車」不是汽车？中日汉字陷阱又来了</span><span>在日本叫辆汽车，结果来了辆火车——真实踩坑</span></div></div></div>
+
+    <div class="trap-card" data-type="t5"><span class="tc-tag tag-t5">同字不同义</span><div class="tc-word">丈夫</div><div class="tc-kana">じょうぶ</div><div class="vs-row"><div class="vs-box vs-wrong"><div class="vs-label">中文意思</div><div class="vs-text">丈夫（老公）</div></div><div class="vs-box vs-right"><div class="vs-label">日语意思</div><div class="vs-text">结实/耐用（形容词）</div></div></div><div class="tip">日语的老公是「夫（おっと）」或「だんな」。</div><div class="idea-box"><div class="idea-label">小红书标题思路</div><div class="idea-title"><span>日语「丈夫」不是老公，是结实耐用的意思？</span><span>中日汉字完全不一样系列，你踩过几个</span></div></div></div>
+  </div>
+
+  <div class="footer">阿萨姆的日语知识库 · 学习难点维度 · 持续更新</div>
+
+
+<script>
+function filterTrap(type,btn){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.trap-card').forEach(c=>{
+    c.classList.toggle('hidden',type!=='all'&&c.dataset.type!==type);
+  });
+}
+</script>
+</body>
+</html>
