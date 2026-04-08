@@ -8,20 +8,32 @@
   @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Sans+JP:wght@400;700&display=swap');
 
   :root {
-    --bg: #f9f7f4;
+    --bg: #f7f7f7;
     --white: #ffffff;
-    --ink: #1f1f1f;
-    --soft: #5a5a5a;
-    --lighter: #8a8a8a;
-    --accent: #d4522a;
-    --accent-bg: #fdf0ec;
-    --border: #e8e4de;
+    --ink: #1a1a1a;
+    --soft: #555555;
+    --lighter: #999999;
+    --accent: #E8709A;
+    --accent-bg: #FFF0F7;
+    --border: #e8e8e8;
     --blue: #4a90d9;
     --blue-bg: #f0f7ff;
-    --yellow-bg: #fffbf0;
-    --yellow-border: #f0c040;
-    --radius: 12px;
+    --radius: 14px;
     --radius-sm: 8px;
+    --pink: #F9A8C9;
+    --pink-dark: #E8709A;
+    --pink-bg: #FFF0F7;
+    --pink-deep: #C4306A;
+    --shadow: 0 2px 12px rgba(0,0,0,.07);
+
+    --l1: #7a3a1e;
+    --l1bg: #f5ece6;
+    --l2: #1e4a7a;
+    --l2bg: #e6eef5;
+    --l3: #2a6a4a;
+    --l3bg: #e6f5ee;
+    --l4: #C4306A;
+    --l4bg: #FFF0F7;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -415,37 +427,118 @@
     .sec-header { padding: 16px 18px 14px; }
   }
 
-  /* Fix: content directly in .section gets padding */
-  .section > .prose,
-  .section > .concept-block,
-  .section > .modern-link,
-  .section > .terms-grid,
-  .section > .pullquote,
-  .section > .timeline,
-  .section > .accuracy-note,
-  .section > .funny-box,
-  .section > .warning-block,
-  .section > .vocab-source-banner,
-  .section > .phrase-card,
-  .section > .phrase-group,
-  .section > p {
-    padding-left: 24px;
-    padding-right: 24px;
+  /* ── 顶部导航 ── */
+  .topnav {
+    position: sticky; top: 0; z-index: 100;
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    font-family: 'Noto Sans SC', sans-serif;
   }
-  .section > .prose:first-of-type { margin-top: 20px; }
-  .section > .accuracy-note:last-child,
-  .section > .modern-link:last-child { margin-bottom: 20px; }
+  .topnav-inner {
+    max-width: 760px; margin: 0 auto;
+    display: flex; align-items: center;
+    padding: 0 20px; height: 52px; gap: 4px;
+  }
+  .topnav-logo {
+    font-size: 14px; font-weight: 900; color: #1a1a1a;
+    text-decoration: none; margin-right: 20px; white-space: nowrap;
+  }
+  .topnav-item {
+    font-size: 13px; font-weight: 500; color: #555;
+    text-decoration: none; padding: 6px 12px; border-radius: 8px;
+    transition: all .15s; white-space: nowrap;
+  }
+  .topnav-item:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-item.active { background: #FFF0F7; color: #C4306A; font-weight: 700; }
+  .topnav-dropdown { position: relative; }
+  .topnav-dropdown-btn {
+    font-size: 13px; font-weight: 500; color: #555;
+    padding: 6px 12px; border-radius: 8px; cursor: pointer;
+    transition: all .15s; display: flex; align-items: center; gap: 4px;
+    border: none; background: none; font-family: inherit;
+  }
+  .topnav-dropdown-btn:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-dropdown-btn svg { width: 12px; height: 12px; transition: transform .2s; }
+  .topnav-dropdown.open .topnav-dropdown-btn { background: #FFF0F7; color: #C4306A; }
+  .topnav-dropdown.open .topnav-dropdown-btn svg { transform: rotate(180deg); }
+  .topnav-menu {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0;
+    background: #fff; border: 1px solid #e8e8e8; border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.10); min-width: 280px; padding: 8px;
+    z-index: 200;
+  }
+  .topnav-dropdown.open .topnav-menu { display: block; }
+  .topnav-menu a {
+    display: block; padding: 8px 12px; font-size: 12px; color: #555;
+    text-decoration: none; border-radius: 8px; line-height: 1.4;
+    transition: all .12s;
+  }
+  .topnav-menu a:hover { background: #FFF0F7; color: #C4306A; }
+  .topnav-menu-label {
+    font-size: 10px; font-weight: 700; color: #999; letter-spacing: .06em;
+    text-transform: uppercase; padding: 6px 12px 4px;
+  }
+  .topnav-menu-divider { height: 1px; background: #e8e8e8; margin: 6px 0; }
+
 </style>
 </head>
 <body>
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a class="topnav-logo" href="index.html">阿萨姆</a>
+    <a class="topnav-item" href="index.html">首页</a>
+    <div class="topnav-dropdown" id="nav-dropdown-word">
+      <button class="topnav-dropdown-btn" onclick="toggleDropdown('nav-dropdown-word')">
+        日语单词知识库
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <div class="topnav-menu">
+        <div class="topnav-menu-label">单词知识库</div>
+        <a href="lib-grammar.html">日语语法体系</a>
+        <a href="lib-traps.html">易错难点库</a>
+        <a href="lib-vocab.html">高频词库</a>
+      </div>
+    </div>
+    <div class="topnav-dropdown" id="nav-dropdown-culture">
+      <button class="topnav-dropdown-btn" onclick="toggleDropdown('nav-dropdown-culture')">
+        日本文化知识库
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4l4 4 4-4"/></svg>
+      </button>
+      <div class="topnav-menu">
+        <div class="topnav-menu-label">九章文化知识库</div>
+        <a href="chapter-01-history.html">第一章 · 日本从哪里来</a>
+        <a href="chapter-02-religion.html">第二章 · 神道教与佛教</a>
+        <a href="chapter-03-language.html">第三章 · 日语是怎么构成的</a>
+        <a href="chapter-04-language-culture.html">第四章 · 藏在日语中的暗语文化</a>
+        <a href="chapter-05-society.html">第五章 · 日本社会文化与地域差异</a>
+        <a href="chapter-06-expressions.html">第六章 · 日本人真正在用的日常表达</a>
+        <a href="chapter-07-class-subcultures.html">第七章 · 阶层与亚文化</a>
+        <a href="chapter-08-popculture-society.html">第八章 · 流行文化与当代社会困境</a>
+        <a href="chapter-09-contrast-myths.html">第九章 · 中日文化对比与误区</a>
+      </div>
+    </div>
+  </div>
+</nav>
+<script>
+function toggleDropdown(id){
+  var target = document.getElementById(id);
+  var others = document.querySelectorAll('.topnav-dropdown');
+  others.forEach(function(d){ if(d.id !== id) d.classList.remove('open'); });
+  target.classList.toggle('open');
+}
+document.addEventListener('click', function(e){
+  if(!e.target.closest('.topnav-dropdown')){
+    document.querySelectorAll('.topnav-dropdown').forEach(function(d){ d.classList.remove('open'); });
+  }
+});
+</script>
+
+
 <div class="page">
 
   <!-- 顶部导航 -->
-  <div class="topbar">
-    <a href="index.html">🏠 首页</a>
-    <span>›</span>
-    <span>第一章</span>
-  </div>
+  
 
   <!-- 章节头部 -->
   <div class="ch-header">
